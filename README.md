@@ -10,7 +10,7 @@ Calendario editorial ilustrado con doce historias y fotografías de archivo de B
 - Doce meses, cada uno con una historia distinta y una fotografía de archivo.
 - Navegación por mes y año, botón **Hoy**, efemérides y fechas destacadas.
 - Animación de cambio de mes con un giro de página antigua.
-- Botón **Descargar app**: entrega una copia autónoma con las fotos y tipografías incluidas, para abrirla sin internet.
+- Botón flotante **Instalar app**: instala el almanaque como PWA en Android, iPhone, iPad o escritorio, con acceso directo y modo sin conexión.
 - Láminas ampliables, créditos, enlace a la fuente e impresión.
 - Diseño responsive para celulares, tabletas, laptops y pantallas horizontales.
 - Carga por demanda: primero la lámina del mes y luego el resto en segundo plano.
@@ -26,24 +26,33 @@ python3 -m http.server 8000
 
 Luego visita `http://localhost:8000`.
 
-> Las fotografías se cargan desde archivos públicos de Radio Nacional de Colombia / Señal Memoria y Wikimedia Commons, así que la primera visita necesita conexión a internet. Después el navegador las conserva en caché.
+> Para probar la instalación PWA y el modo sin conexión hay que servir el sitio por HTTP/HTTPS (localhost sirve). Abrir `index.html` con `file://` muestra la app, pero no permite registrar el service worker.
+
+> Las fotografías se cargan desde archivos públicos de Radio Nacional de Colombia / Señal Memoria y Wikimedia Commons, así que la primera visita necesita conexión a internet. El service worker guarda una copia autónoma para que la app instalada funcione después sin conexión.
 
 ## Estructura
 
 ```
 .
-├── index.html                 # aplicación completa (versión conectada)
+├── index.html                  # aplicación completa (versión conectada)
+├── manifest.webmanifest        # configuración PWA
+├── sw.js                       # service worker y caché offline
 ├── bogota-antigua-offline.html # copia autónoma con fotos y fuentes incrustadas
+├── icons/                      # iconos 192, 512, maskable y Apple Touch
 ├── docs/
-│   └── preview.jpg            # captura de referencia
+│   └── preview.jpg             # captura de referencia
 └── README.md
 ```
 
-## Descarga local
+## Instalar como app
 
-El botón **Descargar app** de la versión publicada descarga `bogota-antigua-offline.html` como `Bogota-Antigua.html`. Esa copia pesa alrededor de 3,7 MB porque lleva las doce fotografías y las tipografías incrustadas en el propio archivo: se puede abrir con doble clic y funciona sin conexión.
+El botón flotante **Instalar app** está siempre visible abajo:
 
-La versión `index.html` es la que se sirve en la web; mantiene las imágenes remotas para cargar rápido y descarga la copia autónoma cuando el usuario la pide. Si se abre `index.html` directamente desde el disco sin el archivo offline al lado, el botón genera una copia de la app actual.
+- **Android / Chrome / Edge:** abre el instalador nativo del navegador.
+- **iPhone / iPad:** abre una guía con los pasos de Safari (Compartir → Añadir a pantalla de inicio). Apple no permite lanzar la instalación por código.
+- **Escritorio:** Chrome y Edge muestran su diálogo de instalación; si el navegador no lo permite, aparece la guía.
+
+Al instalar, el service worker guarda `bogota-antigua-offline.html` y lo usa como respaldo cuando no hay conexión. La app instalada se abre en modo `standalone` (sin barra del navegador) y el botón de instalación se oculta.
 
 ## Despliegue
 
