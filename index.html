@@ -1,0 +1,2361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bogotá Antigua · Almanaque ilustrado</title>
+<meta name="description" content="Bogotá Antigua: un calendario ilustrado con doce historias y fotografías de la ciudad de antes.">
+<meta name="theme-color" content="#fbf6ea">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23fbf6ea'/%3E%3Crect x='6' y='6' width='52' height='52' fill='none' stroke='%23a51c1c' stroke-width='2'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' fill='%23a51c1c' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://rtvc-assets-radionacional-v2.s3.amazonaws.com" crossorigin>
+<link rel="preconnect" href="https://upload.wikimedia.org" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IM+Fell+English+SC&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #fbf6ea;
+    --paper-2: #f4ecdb;
+    --paper-3: #eee2cc;
+    --ink: #2c241d;
+    --muted: #6d5b47;
+    --red: #a51c1c;
+    --red-deep: #7b1111;
+    --line: rgba(165, 28, 28, .26);
+    --line-soft: rgba(165, 28, 28, .13);
+    --gold: #a9864f;
+    --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --display: "IM Fell English SC", "Cormorant Garamond", Georgia, serif;
+    --type: "Special Elite", "Courier New", monospace;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin: 0;
+    min-height: 100vh;
+    padding: clamp(14px, 3.2vw, 46px);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.55;
+    font-variant-numeric: oldstyle-nums;
+    background:
+      radial-gradient(120% 85% at 50% 0%, #fffdf8 0%, #f8f1e2 42%, #e8d8bf 100%);
+  }
+  body::before{
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: .17;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
+  }
+  body.no-scroll{ overflow: hidden; }
+  button{ font: inherit; touch-action: manipulation; }
+  a{ color: var(--red); text-underline-offset: 3px; }
+  button:focus-visible, a:focus-visible{ outline: 2px solid var(--red); outline-offset: 3px; }
+  img{ max-width: 100%; }
+  ::selection{ background: var(--red); color: #fff8e9; }
+
+  .almanac{
+    position: relative;
+    z-index: 1;
+    width: min(1240px, 100%);
+    margin: 0 auto;
+    padding: clamp(20px, 3.6vw, 48px) clamp(18px, 3.8vw, 52px) clamp(24px, 3vw, 38px);
+    background-color: var(--paper);
+    background-image:
+      repeating-linear-gradient(0deg, transparent 0 31px, rgba(165, 28, 28, .028) 31px 32px),
+      radial-gradient(130% 90% at 50% 0%, rgba(255,255,255,.82), rgba(255,255,255,0) 55%),
+      linear-gradient(180deg, #fffdf7 0%, var(--paper) 34%, #f8f1e2 100%);
+    border: 1px solid var(--red);
+    box-shadow:
+      0 42px 90px -30px rgba(76, 48, 21, .45),
+      0 14px 30px -18px rgba(76, 48, 21, .3),
+      inset 0 0 90px rgba(154, 117, 64, .07);
+    overflow: hidden;
+  }
+  .almanac::before{
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(165, 28, 28, .55);
+    pointer-events: none;
+  }
+  .almanac::after{
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 1px dotted rgba(165, 28, 28, .18);
+    pointer-events: none;
+  }
+  .corner{
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .corner.tl{ top: 15px; left: 15px; border-top: 2px solid var(--red); border-left: 2px solid var(--red); }
+  .corner.tr{ top: 15px; right: 15px; border-top: 2px solid var(--red); border-right: 2px solid var(--red); }
+  .corner.bl{ bottom: 15px; left: 15px; border-bottom: 2px solid var(--red); border-left: 2px solid var(--red); }
+  .corner.br{ bottom: 15px; right: 15px; border-bottom: 2px solid var(--red); border-right: 2px solid var(--red); }
+
+  /* ---------- cabecera ---------- */
+  .masthead{ text-align: center; position: relative; }
+  .topline{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    color: var(--red);
+    font-family: var(--type);
+    font-size: .6rem;
+    letter-spacing: .23em;
+    text-transform: uppercase;
+  }
+  .topline .star{ font-size: .7rem; transform: translateY(-1px); }
+  .title-row{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: clamp(18px, 4vw, 48px);
+    margin-top: 12px;
+  }
+  h1{
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(2.75rem, 7.2vw, 5.7rem);
+    line-height: .88;
+    letter-spacing: .035em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  h1 span{ display: block; }
+  h1 .h1-second{
+    margin-top: .04em;
+    font-size: .8em;
+    letter-spacing: .14em;
+    color: var(--ink);
+  }
+  .edition{
+    flex: 0 0 auto;
+    min-width: 118px;
+    padding: 4px 0 4px 18px;
+    border-left: 1px solid var(--line);
+    text-align: left;
+    align-self: center;
+  }
+  .edition .ed-label{
+    display: block;
+    font-family: var(--type);
+    font-size: .55rem;
+    letter-spacing: .24em;
+    color: var(--red);
+  }
+  .edition .ed-year{
+    display: block;
+    margin: 2px 0 1px;
+    font-family: var(--serif);
+    font-size: 1.65rem;
+    line-height: 1;
+    letter-spacing: .08em;
+    color: var(--ink);
+  }
+  .edition .ed-note{
+    display: block;
+    font-family: var(--type);
+    font-size: .52rem;
+    letter-spacing: .12em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .subtitle{
+    margin: 14px auto 0;
+    max-width: 620px;
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    font-style: italic;
+    color: var(--muted);
+    letter-spacing: .015em;
+  }
+  .ornament-rule{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 18px auto 10px;
+    max-width: 760px;
+    color: var(--red);
+  }
+  .ornament-rule span{ flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--red)); }
+  .ornament-rule span:last-child{ background: linear-gradient(90deg, var(--red), transparent); }
+  .ornament-rule b{ font-size: 1.15rem; font-weight: 400; line-height: 1; }
+  .dateline{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 7px 14px;
+    font-family: var(--type);
+    font-size: .56rem;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .dateline .dot{ color: var(--red); font-size: .5rem; transform: translateY(-1px); }
+
+  /* ---------- navegación de meses ---------- */
+  .nav-row{
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+    margin: clamp(18px, 2.8vw, 28px) 0 0;
+    padding: 9px 0;
+    border-top: 1px solid var(--red);
+    border-bottom: 1px solid var(--red);
+  }
+  .monthnav{
+    display: flex;
+    flex: 1;
+    gap: 3px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 2px;
+    scroll-behavior: smooth;
+  }
+  .monthnav::-webkit-scrollbar{ display: none; }
+  .month-tab{
+    flex: 1 0 58px;
+    min-width: 52px;
+    padding: 6px 4px 5px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    transition: background .18s ease, color .18s ease, border-color .18s ease;
+    line-height: 1.05;
+  }
+  .month-tab .mt-roman{
+    display: block;
+    font-family: var(--serif);
+    font-size: .7rem;
+    letter-spacing: .06em;
+    color: var(--red);
+  }
+  .month-tab .mt-name{
+    display: block;
+    margin-top: 3px;
+    font-family: var(--type);
+    font-size: .55rem;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+  }
+  .month-tab:hover{ border-color: var(--line); background: rgba(165, 28, 28, .05); }
+  .month-tab[aria-current="true"]{
+    background: var(--red);
+    border-color: var(--red);
+    color: #fff8e9;
+    box-shadow: 0 2px 0 rgba(123, 17, 17, .25);
+  }
+  .month-tab[aria-current="true"] .mt-roman{ color: #f2cfb0; }
+  .today-btn{
+    flex: 0 0 auto;
+    align-self: center;
+    padding: 8px 13px;
+    border: 1px solid var(--red);
+    background: transparent;
+    color: var(--red);
+    cursor: pointer;
+    font-family: var(--type);
+    font-size: .58rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    transition: background .18s ease, color .18s ease;
+    white-space: nowrap;
+  }
+  .today-btn:hover{ background: var(--red); color: #fff8e9; }
+
+  /* ---------- libro ---------- */
+  .spread{
+    display: grid;
+    grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+    margin-top: clamp(20px, 3vw, 32px);
+    padding-top: 12px;
+    overflow: hidden;
+  }
+  .leaf{ min-width: 0; }
+  .leaf-left{ position: relative; padding-right: clamp(20px, 3.2vw, 42px); }
+  .leaf-right{
+    padding-left: clamp(20px, 3.2vw, 42px);
+    border-left: 1px solid var(--line);
+    position: relative;
+  }
+  .leaf-right::before{
+    content: "";
+    position: absolute;
+    left: -3px;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background: linear-gradient(90deg, rgba(90, 55, 20, .08), transparent);
+    pointer-events: none;
+  }
+
+  /* ---------- giro de página ---------- */
+  .page-turn{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 40;
+    pointer-events: none;
+    perspective: 2000px;
+    perspective-origin: 0% 50%;
+  }
+  .page-turn.prev{ perspective-origin: 100% 50%; }
+  .page-turn .turn-sheet{
+    position: absolute;
+    inset: 0;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transform-origin: left center;
+    -webkit-transform-origin: left center;
+    will-change: transform;
+  }
+  .page-turn.prev .turn-sheet{ transform-origin: right center; }
+  .page-turn .turn-face{
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    background: var(--paper);
+    border: 1px solid rgba(165, 28, 28, .5);
+    box-shadow: inset 0 0 32px rgba(86, 57, 24, .12), 0 18px 32px -18px rgba(56, 33, 12, .45);
+  }
+  .page-turn .turn-face.back{
+    transform: rotateY(180deg);
+    display: grid;
+    place-items: center;
+    background:
+      repeating-linear-gradient(0deg, transparent 0 31px, rgba(165, 28, 28, .04) 31px 32px),
+      radial-gradient(120% 100% at 50% 30%, #fffdf7, var(--paper-2));
+  }
+  .page-turn .turn-content{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+  }
+  .page-turn .leaf-left,
+  .page-turn .leaf-right{ margin: 0; }
+  .page-turn .turn-face.front::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(90deg, rgba(74, 45, 18, .16), transparent 15%, transparent 82%, rgba(74, 45, 18, .1));
+  }
+  .page-turn .back-mark{
+    font-family: var(--display);
+    font-size: clamp(1.1rem, 3.6vw, 2rem);
+    letter-spacing: .2em;
+    color: rgba(165, 28, 28, .25);
+    border-top: 1px solid rgba(165, 28, 28, .22);
+    border-bottom: 1px solid rgba(165, 28, 28, .22);
+    padding: 8px 22px;
+  }
+  .page-turn.next .turn-sheet{ animation: pageTurnNext .95s cubic-bezier(.38, .02, .18, 1) forwards; }
+  .page-turn.prev .turn-sheet{ animation: pageTurnPrev .95s cubic-bezier(.38, .02, .18, 1) forwards; }
+  @keyframes pageTurnNext{
+    0%{ transform: rotateY(0deg) rotateZ(0deg); }
+    100%{ transform: rotateY(-178deg) rotateZ(-1.2deg); }
+  }
+  @keyframes pageTurnPrev{
+    0%{ transform: rotateY(0deg) rotateZ(0deg); }
+    100%{ transform: rotateY(178deg) rotateZ(1.2deg); }
+  }
+  .leaf.is-revealing{ animation: pageReveal .9s cubic-bezier(.2, .7, .2, 1) both; }
+  @keyframes pageReveal{
+    0%{ opacity: .3; }
+    55%{ opacity: .75; }
+    100%{ opacity: 1; }
+  }
+
+  /* ---------- mes ---------- */
+  .month-plate{
+    position: relative;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .plate-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .eyebrow{
+    font-family: var(--type);
+    font-size: .58rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+  .month-arrows{ display: flex; gap: 6px; }
+  .arrow-btn{
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--red);
+    cursor: pointer;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    line-height: 1;
+    transition: background .18s ease, color .18s ease, border-color .18s ease;
+  }
+  .arrow-btn:hover{ background: var(--red); border-color: var(--red); color: #fff8e9; }
+  .month-plate h2{
+    margin: 6px 0 0;
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(3.1rem, 5.4vw, 4.9rem);
+    line-height: .84;
+    letter-spacing: -.035em;
+    color: var(--ink);
+  }
+  .month-plate h2 .month-accent{ color: var(--red); font-style: italic; }
+  .plate-bottom{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 14px;
+    margin-top: 9px;
+  }
+  .year-stepper{
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--muted);
+    font-family: var(--type);
+    font-size: .63rem;
+    letter-spacing: .13em;
+  }
+  .year-stepper button{
+    width: 18px;
+    height: 18px;
+    border: 0;
+    background: transparent;
+    color: var(--red);
+    cursor: pointer;
+    padding: 0;
+    font-size: 1rem;
+    line-height: 1;
+  }
+  .year-stepper button:hover{ color: var(--red-deep); }
+  .roman-badge{
+    min-width: 44px;
+    padding: 3px 8px 2px;
+    border: 1px solid var(--red);
+    color: var(--red);
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    letter-spacing: .08em;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  /* ---------- calendario ---------- */
+  .calendar{ margin-top: 15px; }
+  .weekdays{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-bottom: 1px solid var(--red);
+    padding-bottom: 6px;
+  }
+  .weekdays span{
+    text-align: center;
+    font-family: var(--type);
+    font-size: .55rem;
+    letter-spacing: .08em;
+    color: var(--red);
+    text-transform: uppercase;
+  }
+  .days{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-left: 1px solid var(--line);
+  }
+  .day{
+    position: relative;
+    aspect-ratio: 1 / .9;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    font-family: var(--serif);
+    font-size: 1.06rem;
+    line-height: 1;
+    transition: background .16s ease;
+  }
+  .day.blank{
+    cursor: default;
+    background-image: repeating-linear-gradient(135deg, transparent 0 7px, rgba(165, 28, 28, .035) 7px 8px);
+  }
+  .day:not(.blank):hover{ background: rgba(165, 28, 28, .055); }
+  .day .num{
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    transition: background .16s ease, color .16s ease, box-shadow .16s ease;
+  }
+  .day.is-weekend{ color: var(--red); }
+  .day.is-today .num{
+    background: var(--red);
+    color: #fff8e9;
+    box-shadow: 0 3px 8px -2px rgba(123, 17, 17, .5);
+  }
+  .day.is-selected:not(.is-today) .num{
+    background: rgba(165, 28, 28, .09);
+    box-shadow: inset 0 0 0 1px var(--red);
+  }
+  .day.has-event::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 5px;
+    width: 4px;
+    height: 4px;
+    background: var(--red);
+    transform: translateX(-50%) rotate(45deg);
+    opacity: .72;
+  }
+  .calendar-legend{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px 14px;
+    margin-top: 8px;
+    font-family: var(--type);
+    font-size: .5rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .calendar-legend b{ color: var(--red); font-weight: 400; }
+
+  /* ---------- hoy ---------- */
+  .today-card{
+    margin-top: 17px;
+    padding: 13px 0 12px;
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    border-top: 1px solid var(--red);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .today-seal{
+    flex: 0 0 auto;
+    width: 56px;
+    height: 56px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--red);
+    outline: 1px solid rgba(165, 28, 28, .45);
+    outline-offset: 3px;
+    transform: rotate(-6deg);
+    color: var(--red);
+    font-family: var(--type);
+    font-size: .58rem;
+    letter-spacing: .13em;
+    line-height: 1.15;
+    text-align: center;
+    text-transform: uppercase;
+    background: rgba(255, 253, 246, .45);
+  }
+  .today-body{ min-width: 0; }
+  .today-date{
+    font-size: 1.13rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: .005em;
+  }
+  .today-meta{
+    margin-top: 3px;
+    font-family: var(--type);
+    font-size: .52rem;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .today-note{
+    margin: 8px 0 0;
+    font-size: .98rem;
+    line-height: 1.4;
+    font-style: italic;
+    color: var(--muted);
+  }
+  .today-note b{
+    color: var(--red);
+    font-style: normal;
+    font-weight: 600;
+    font-family: var(--type);
+    font-size: .68rem;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+  }
+  .back-today{
+    margin-top: 6px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--red);
+    font-family: var(--type);
+    font-size: .52rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .back-today[hidden]{ display: none; }
+
+  .marginalia{
+    margin: 18px 0 0;
+    padding: 0 0 0 14px;
+    border-left: 2px solid var(--red);
+    color: var(--muted);
+    font-style: italic;
+    font-size: .98rem;
+    line-height: 1.45;
+  }
+  .marginalia cite{
+    display: block;
+    margin-top: 5px;
+    font-family: var(--type);
+    font-style: normal;
+    font-size: .5rem;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+
+  .year-notes{
+    margin-top: 22px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+  }
+  .year-notes-head{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    font-family: var(--type);
+    font-size: .5rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+  .year-notes-head span:last-child{ color: var(--muted); letter-spacing: .1em; }
+  .year-notes ul{ list-style: none; margin: 4px 0 0; padding: 0; }
+  .year-notes li{ border-bottom: 1px dotted var(--line-soft); }
+  .year-note-btn{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 6px 2px;
+    border: 0;
+    background: none;
+    color: var(--ink);
+    text-align: left;
+    cursor: pointer;
+  }
+  .year-note-btn:hover{ background: rgba(165, 28, 28, .045); }
+  .yn-date{
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    line-height: 1;
+    color: var(--red);
+    text-align: center;
+  }
+  .yn-date small{
+    display: block;
+    margin-top: 2px;
+    font-family: var(--type);
+    font-size: .42rem;
+    letter-spacing: .1em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .yn-text{
+    font-size: .86rem;
+    line-height: 1.3;
+    font-style: italic;
+    color: var(--muted);
+  }
+
+  /* ---------- lámina ---------- */
+  .plate{
+    margin: 0;
+    position: relative;
+  }
+  .plate-tab{
+    position: absolute;
+    z-index: 3;
+    top: -9px;
+    left: 18px;
+    padding: 3px 9px;
+    background: var(--paper);
+    border: 1px solid var(--red);
+    color: var(--red);
+    font-family: var(--type);
+    font-size: .5rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+  .plate-tab b{ font-weight: 400; }
+  .plate-inner{
+    position: relative;
+    height: clamp(292px, 37vw, 430px);
+    padding: 9px;
+    border: 1px solid var(--red);
+    background: var(--paper-3);
+    box-shadow: inset 0 0 28px rgba(86, 57, 24, .16);
+    overflow: hidden;
+  }
+  .plate-inner::before{
+    content: "";
+    position: absolute;
+    inset: 9px;
+    border: 1px solid rgba(255, 250, 238, .5);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .photo{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 42%;
+    filter: sepia(.24) contrast(1.04) saturate(.82) brightness(.99);
+    transform: scale(1.035);
+    opacity: 0;
+    transition: opacity .55s ease, transform 1.1s cubic-bezier(.2, .7, .2, 1), filter .4s ease;
+  }
+  .plate.is-loaded .photo{ opacity: 1; transform: scale(1); }
+  .plate:hover .photo{ filter: sepia(.1) contrast(1.02) saturate(.92); }
+  .photo-loading{
+    position: absolute;
+    inset: 9px;
+    z-index: 4;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 8px;
+    background:
+      repeating-linear-gradient(0deg, rgba(165, 28, 28, .04) 0 1px, transparent 1px 7px),
+      var(--paper-2);
+    color: var(--muted);
+    font-family: var(--type);
+    font-size: .54rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 22px;
+    transition: opacity .4s ease, visibility .4s ease;
+  }
+  .photo-loading::before{
+    content: "";
+    width: 42px;
+    height: 1px;
+    background: var(--red);
+    animation: reveal 1.2s ease-in-out infinite;
+  }
+  .photo-loading span{ display: block; }
+  .photo-loading .load-sub{
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: .8rem;
+    letter-spacing: .02em;
+    text-transform: none;
+    color: var(--muted);
+    max-width: 240px;
+  }
+  .photo-loading.has-error::before{ display: none; }
+  .photo-loading.has-error .retry{
+    display: inline-block;
+    margin-top: 4px;
+    padding: 4px 8px;
+    border: 1px solid var(--red);
+    background: transparent;
+    color: var(--red);
+    cursor: pointer;
+    font-family: var(--type);
+    font-size: .52rem;
+    letter-spacing: .12em;
+  }
+  .retry{ display: none; }
+  .plate.is-loaded .photo-loading{ opacity: 0; visibility: hidden; }
+  @keyframes reveal{
+    0%, 100%{ transform: scaleX(.3); opacity: .35; }
+    50%{ transform: scaleX(1); opacity: 1; }
+  }
+  .plate-zoom{
+    position: absolute;
+    inset: 9px;
+    z-index: 5;
+    border: 0;
+    background: transparent;
+    cursor: zoom-in;
+  }
+  .plate-zoom:focus-visible{ outline: 2px solid var(--red); outline-offset: -4px; }
+  .archive-seal{
+    position: absolute;
+    z-index: 6;
+    right: -16px;
+    top: 22px;
+    width: 86px;
+    height: 86px;
+    border-radius: 50%;
+    border: 1px solid var(--red);
+    box-shadow: inset 0 0 0 4px var(--paper), inset 0 0 0 5px rgba(165,28,28,.55);
+    background: rgba(251, 246, 234, .9);
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 1px;
+    color: var(--red);
+    font-family: var(--type);
+    font-size: .42rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    transform: rotate(9deg);
+    pointer-events: none;
+    line-height: 1;
+  }
+  .archive-seal strong{
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    line-height: 1;
+  }
+  .plate figcaption{
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 9px;
+    padding-top: 6px;
+    border-top: 1px dotted var(--line);
+    color: var(--muted);
+    font-size: .8rem;
+    font-style: italic;
+    line-height: 1.35;
+  }
+  .plate figcaption a{
+    flex: 0 0 auto;
+    font-family: var(--type);
+    font-style: normal;
+    font-size: .48rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    align-self: flex-start;
+    margin-top: 2px;
+  }
+
+  /* ---------- historia ---------- */
+  .story{ margin-top: 20px; }
+  .story-kicker{
+    display: inline-block;
+    font-family: var(--type);
+    font-size: .54rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--red);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 4px;
+  }
+  .story h3{
+    margin: 7px 0 9px;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(1.9rem, 3vw, 2.55rem);
+    line-height: .98;
+    letter-spacing: -.025em;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  .story-body p{
+    margin: 0 0 9px;
+    font-size: 1.01rem;
+    line-height: 1.52;
+    text-align: justify;
+    hyphens: auto;
+  }
+  .story-body p.lede{
+    font-size: 1.12rem;
+    font-style: italic;
+    color: #43362a;
+    line-height: 1.45;
+  }
+  .story-body p.lede::first-letter{
+    float: left;
+    font-family: var(--display);
+    font-style: normal;
+    font-size: 3.25em;
+    line-height: .74;
+    padding: .06em .1em 0 0;
+    color: var(--red);
+  }
+  .fact-box{
+    margin: 14px 0 0;
+    padding: 10px 0 10px 14px;
+    border-left: 2px solid var(--red);
+    background: linear-gradient(90deg, rgba(165, 28, 28, .055), transparent 88%);
+  }
+  .fact-label{
+    display: block;
+    font-family: var(--type);
+    font-size: .49rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 2px;
+  }
+  .fact-box p{
+    margin: 0;
+    font-size: .9rem;
+    line-height: 1.42;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .story-foot{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px solid var(--line);
+  }
+  .story-credit{
+    font-family: var(--type);
+    font-size: .46rem;
+    letter-spacing: .07em;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .text-btn{
+    flex: 0 0 auto;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--red);
+    cursor: pointer;
+    font-family: var(--type);
+    font-size: .5rem;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    white-space: nowrap;
+  }
+
+  /* ---------- archivo ---------- */
+  .archive{
+    margin-top: clamp(26px, 4vw, 40px);
+    padding-top: 15px;
+    border-top: 1px solid var(--red);
+  }
+  .archive-head{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 11px;
+  }
+  .archive-head h4{
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  .archive-head span{
+    font-family: var(--type);
+    font-size: .5rem;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .archive-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(10px, 1.8vw, 20px);
+  }
+  .archive-card{
+    display: block;
+    color: var(--ink);
+    text-decoration: none;
+    border: 1px solid var(--line);
+    padding: 6px;
+    background: rgba(255, 253, 246, .4);
+    transition: border-color .2s ease, transform .2s ease;
+  }
+  .archive-card:hover{ border-color: var(--red); transform: translateY(-2px); }
+  .archive-thumb{
+    display: block;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--paper-2);
+  }
+  .archive-thumb img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(.4) contrast(1.02) saturate(.7);
+    transition: transform .5s ease, filter .3s ease;
+  }
+  .archive-card:hover img{ transform: scale(1.035); filter: sepia(.2) contrast(1.03) saturate(.85); }
+  .archive-card figcaption{
+    padding: 7px 2px 1px;
+    font-size: .78rem;
+    font-style: italic;
+    line-height: 1.25;
+    color: var(--muted);
+  }
+  .archive-card figcaption b{
+    display: block;
+    font-family: var(--type);
+    font-style: normal;
+    font-weight: 400;
+    font-size: .47rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 2px;
+  }
+
+  /* ---------- pie ---------- */
+  .footer{
+    margin-top: 24px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .footer-brand{
+    font-family: var(--display);
+    font-size: .95rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+  .footer-note{
+    max-width: 440px;
+    font-size: .8rem;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--muted);
+  }
+  .footer-note a{ color: var(--muted); }
+  .footer-side{ text-align: right; }
+  .load-status{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    font-family: var(--type);
+    font-size: .46rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .load-bar{
+    width: 64px;
+    height: 2px;
+    background: var(--line);
+    overflow: hidden;
+  }
+  .load-bar span{
+    display: block;
+    height: 100%;
+    width: 0%;
+    background: var(--red);
+    transition: width .35s ease;
+  }
+  .footer-actions{
+    margin-top: 7px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+  .footer-actions button{
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--red);
+    font-family: var(--type);
+    font-size: .48rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ---------- lightbox ---------- */
+  .lightbox{
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: grid;
+    place-items: center;
+    padding: clamp(14px, 4vw, 40px);
+    background: rgba(32, 22, 14, .88);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .25s ease, visibility .25s ease;
+  }
+  .lightbox.is-open{ opacity: 1; visibility: visible; }
+  .lb-figure{
+    margin: 0;
+    width: min(1000px, 100%);
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .lb-figure img{
+    width: 100%;
+    max-height: 76vh;
+    object-fit: contain;
+    background: var(--paper);
+    border: 8px solid var(--paper);
+    box-shadow: 0 22px 60px rgba(0, 0, 0, .4);
+  }
+  .lb-figure figcaption{
+    color: #f2e6cf;
+    font-size: .9rem;
+    font-style: italic;
+    line-height: 1.4;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .lb-figure figcaption a{ color: #e8b9a0; font-family: var(--type); font-style: normal; font-size: .5rem; letter-spacing: .11em; text-transform: uppercase; white-space: nowrap; }
+  .lb-close{
+    position: fixed;
+    top: 16px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(242, 230, 207, .55);
+    border-radius: 50%;
+    background: transparent;
+    color: #f2e6cf;
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+  }
+  .lb-close:hover{ background: rgba(242, 230, 207, .12); }
+
+  /* ---------- utilidades ---------- */
+  .sr-only{
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .fade-in{ animation: fadeIn .45s ease both; }
+  @keyframes fadeIn{ from{ opacity: 0; transform: translateY(6px); } to{ opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  }
+
+  @media (pointer: coarse){
+    .month-tab{ min-height: 40px; }
+    .arrow-btn{ width: 36px; height: 36px; }
+    .today-btn{ min-height: 38px; }
+    .year-note-btn{ min-height: 42px; }
+  }
+
+  /* ---------- tabletas: libro en dos páginas ---------- */
+  @media (min-width: 761px) and (max-width: 980px){
+    .month-tab{ flex-basis: 40px; min-width: 36px; padding: 5px 2px; }
+    .month-tab .mt-name{ font-size: .48rem; letter-spacing: .06em; }
+    .today-btn{ padding: 7px 9px; font-size: .52rem; }
+    .leaf-left{ padding-right: 24px; }
+    .leaf-right{ padding-left: 24px; }
+    .month-plate h2{ font-size: clamp(2.8rem, 5vw, 3.8rem); }
+    .plate-inner{ height: clamp(250px, 30vw, 340px); }
+    .day{ font-size: .95rem; aspect-ratio: 1 / .85; }
+    .day .num{ width: 30px; height: 30px; }
+    .story-body p{ font-size: .98rem; text-align: left; }
+    .story h3{ font-size: 1.95rem; }
+    .today-card{ gap: 12px; }
+    .today-seal{ width: 50px; height: 50px; font-size: .5rem; }
+    .today-date{ font-size: 1.02rem; }
+    .year-notes .yn-text{ font-size: .8rem; }
+    .archive-grid{ gap: 12px; }
+  }
+
+  /* ---------- pantallas medianas ---------- */
+  @media (max-width: 760px){
+    .spread{ grid-template-columns: 1fr; }
+    .leaf-left,
+    .leaf-right{
+      width: 100%;
+      max-width: 580px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .leaf-left{ padding-right: 0; }
+    .leaf-right{
+      margin-top: 26px;
+      padding-left: 0;
+      padding-top: 24px;
+      border-left: 0;
+      border-top: 1px solid var(--line);
+    }
+    .leaf-right::before{ display: none; }
+    .plate-inner{ height: clamp(300px, 55vw, 460px); }
+    .today-card{ max-width: 620px; }
+    .month-plate h2{ font-size: clamp(3rem, 8vw, 4.6rem); }
+    .archive-seal{ right: 8px; }
+    .page-turn{ perspective: 1500px; }
+    .page-turn .turn-sheet{ animation-duration: 1s; }
+  }
+
+  @media (max-width: 680px){
+    body{
+      padding:
+        max(8px, env(safe-area-inset-top, 0px))
+        max(8px, env(safe-area-inset-right, 0px))
+        max(12px, env(safe-area-inset-bottom, 0px))
+        max(8px, env(safe-area-inset-left, 0px));
+      font-size: 17px;
+    }
+    .almanac{ padding: 24px 16px 26px; }
+    .almanac::before{ inset: 5px; }
+    .almanac::after{ inset: 9px; }
+    .corner{ display: none; }
+    .title-row{ display: block; }
+    .edition{
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-top: 12px;
+      padding: 0;
+      border-left: 0;
+      text-align: center;
+    }
+    .edition .ed-year{ font-size: 1.2rem; }
+    h1{ font-size: clamp(2.5rem, 13vw, 3.8rem); }
+    .topline{ gap: 8px; font-size: .47rem; letter-spacing: .15em; }
+    .subtitle{ margin-top: 10px; font-size: .98rem; }
+    .dateline{ font-size: .47rem; gap: 5px 8px; letter-spacing: .08em; }
+    .nav-row{ gap: 6px; padding: 7px 0; }
+    .monthnav{ gap: 2px; }
+    .monthnav{
+      -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+      mask-image: linear-gradient(90deg, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+    }
+    .month-tab{ flex-basis: 46px; min-width: 42px; padding: 5px 2px; }
+    .month-tab .mt-name{ font-size: .47rem; letter-spacing: .06em; }
+    .month-tab .mt-roman{ font-size: .58rem; }
+    .today-btn{ padding: 7px 9px; font-size: .48rem; letter-spacing: .08em; }
+    .month-plate h2{ font-size: 3rem; }
+    .day{ font-size: .95rem; aspect-ratio: 1 / .95; }
+    .day .num{ width: 30px; height: 30px; }
+    .plate-inner{ height: 270px; }
+    .archive-seal{ width: 70px; height: 70px; right: 4px; top: 16px; }
+    .archive-seal strong{ font-size: 1.05rem; }
+    .story-body p{ font-size: .98rem; text-align: left; }
+    .story-body p.lede{ font-size: 1.06rem; }
+    .story h3{ font-size: 2rem; }
+    .story-foot{ align-items: flex-start; }
+    .archive-grid{ grid-template-columns: 1fr; gap: 12px; }
+    .archive-head{ flex-direction: column; align-items: flex-start; gap: 2px; }
+    .archive-head h4{ font-size: 1rem; }
+    .archive-card{ display: flex; gap: 10px; align-items: stretch; }
+    .archive-thumb{ flex: 0 0 42%; aspect-ratio: 4 / 3; }
+    .archive-card figcaption{ align-self: center; padding: 0 2px; }
+    .footer{ flex-direction: column; gap: 10px; }
+    .footer-side{ text-align: left; width: 100%; }
+    .load-status, .footer-actions{ justify-content: flex-start; }
+    .lb-figure figcaption{ flex-direction: column; gap: 6px; }
+  }
+
+  @media (max-width: 520px){
+    .almanac{ padding: 20px 14px 22px; }
+    .month-plate h2{ font-size: clamp(2.65rem, 12vw, 3rem); }
+    .plate-inner{ height: clamp(230px, 68vw, 300px); }
+    .plate figcaption{ flex-direction: column; gap: 4px; }
+    .plate figcaption a{ align-self: flex-start; }
+    .story-foot{ flex-wrap: wrap; gap: 6px 12px; }
+    .story-credit{ flex: 1 1 100%; }
+    .calendar-legend{ gap: 3px 10px; }
+    .archive-head h4{ font-size: .95rem; }
+    .footer-note{ font-size: .78rem; }
+  }
+
+  @media (max-width: 380px){
+    body{ font-size: 16px; }
+    .almanac{ padding: 18px 12px 20px; }
+    h1{ font-size: 2.1rem; }
+    h1 .h1-second{ letter-spacing: .09em; }
+    .month-plate h2{ font-size: 2.5rem; }
+    .month-tab{ flex-basis: 38px; min-width: 36px; }
+    .today-btn{ padding: 7px 7px; }
+    .day{ font-size: .9rem; }
+    .day .num{ width: 28px; height: 28px; }
+    .plate-inner{ height: clamp(210px, 68vw, 240px); }
+    .today-card{ gap: 10px; }
+    .today-seal{ width: 44px; height: 44px; font-size: .44rem; }
+    .today-date{ font-size: .95rem; }
+    .story h3{ font-size: 1.85rem; }
+    .story-body p{ font-size: .94rem; line-height: 1.48; }
+    .story-body p.lede{ font-size: 1rem; }
+    .archive-card figcaption{ font-size: .74rem; }
+  }
+
+  @media (max-width: 340px){
+    .almanac{ padding: 16px 10px 18px; }
+    h1{ font-size: 1.9rem; }
+    .month-plate h2{ font-size: 2.3rem; }
+    .month-tab{ flex-basis: 34px; min-width: 32px; }
+    .month-tab .mt-name{ font-size: .42rem; }
+    .today-btn{ font-size: .42rem; padding: 6px 5px; }
+    .day{ font-size: .85rem; }
+    .day .num{ width: 26px; height: 26px; }
+    .plate-inner{ height: 200px; }
+    .today-card{ gap: 8px; }
+    .today-seal{ width: 40px; height: 40px; font-size: .4rem; }
+    .today-date{ font-size: .9rem; }
+    .story h3{ font-size: 1.75rem; }
+    .story-body p{ font-size: .9rem; }
+    .footer-brand{ font-size: .85rem; }
+  }
+
+  /* pantallas muy planas: móvil o tableta en horizontal */
+  @media (max-height: 560px) and (orientation: landscape){
+    body{ padding: 6px; }
+    .almanac{ padding: 14px 22px 18px; }
+    .masthead .topline,
+    .masthead .subtitle,
+    .masthead .ornament-rule,
+    .masthead .dateline{ display: none; }
+    .title-row{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 0;
+    }
+    h1{
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      font-size: 2.15rem;
+      line-height: 1;
+    }
+    h1 span{ display: inline; }
+    h1 .h1-second{ margin-top: 0; font-size: .74em; letter-spacing: .1em; }
+    .edition{
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+      margin: 0;
+      padding: 0 0 0 14px;
+      border-left: 1px solid var(--line);
+      text-align: left;
+    }
+    .edition .ed-label,
+    .edition .ed-note{ display: none; }
+    .edition .ed-year{ font-size: 1.05rem; }
+    .nav-row{ margin-top: 8px; padding: 5px 0; }
+    .month-tab{ padding: 3px 2px; }
+    .spread{ margin-top: 10px; }
+    .leaf-left{ max-width: 600px; margin: 0 auto; }
+    .calendar{ max-width: 540px; }
+    .month-plate h2{ font-size: 2.2rem; }
+    .plate-inner{ height: 210px; }
+    .today-card{ margin-top: 10px; }
+    .archive{ margin-top: 22px; }
+  }
+
+  /* ---------- impresión ---------- */
+  @media print{
+    body{ background: #fff; padding: 0; }
+    body::before, .monthnav, .today-btn, .archive, .footer-actions, .load-status, .lb-close, .plate-zoom, .month-arrows, .year-stepper button, .back-today{ display: none !important; }
+    .almanac{ box-shadow: none; border: 1px solid #000; width: 100%; padding: 24px; }
+    .almanac::before, .almanac::after, .corner, .leaf-right::before{ display: none; }
+    .spread{ grid-template-columns: 1fr 1fr; gap: 22px; }
+    .leaf-right{ border-left: 1px solid #999; padding-left: 22px; margin-top: 0; padding-top: 0; border-top: 0; }
+    .plate-inner{ height: 320px; }
+    .photo{ opacity: 1 !important; transform: none !important; filter: grayscale(1) contrast(1.05); }
+    .photo-loading{ display: none !important; }
+    .archive-seal{ display: none; }
+    .page-turn{ display: none !important; }
+    a{ color: inherit; text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+<div class="almanac" id="almanac">
+  <i class="corner tl" aria-hidden="true"></i>
+  <i class="corner tr" aria-hidden="true"></i>
+  <i class="corner bl" aria-hidden="true"></i>
+  <i class="corner br" aria-hidden="true"></i>
+
+  <header class="masthead">
+    <div class="topline">
+      <span class="star" aria-hidden="true">✦</span>
+      <span>Almanaque ilustrado de la memoria</span>
+      <span class="star" aria-hidden="true">✦</span>
+    </div>
+
+    <div class="title-row">
+      <h1><span>Bogotá</span><span class="h1-second">Antigua</span></h1>
+      <div class="edition" aria-label="Edición del almanaque">
+        <span class="ed-label">Año</span>
+        <span class="ed-year" id="editionYear">MMXXVI</span>
+        <span class="ed-note">Bogotá · D. C.</span>
+      </div>
+    </div>
+
+    <p class="subtitle">Doce meses, doce historias de la ciudad que fuimos.</p>
+
+    <div class="ornament-rule" aria-hidden="true">
+      <span></span><b>❦</b><span></span>
+    </div>
+
+    <div class="dateline">
+      <span>Fundada el 6 de agosto de 1538</span>
+      <span class="dot" aria-hidden="true">◆</span>
+      <span>2.640 m sobre el nivel del mar</span>
+      <span class="dot" aria-hidden="true">◆</span>
+      <span id="issueLine">Almanaque para el año 2026</span>
+    </div>
+  </header>
+
+  <div class="nav-row">
+    <nav class="monthnav" id="monthNav" role="tablist" aria-label="Meses del año"></nav>
+    <button class="today-btn" id="todayBtn" type="button" title="Ir al mes actual">◎ Hoy</button>
+  </div>
+
+  <main class="spread">
+    <section class="leaf leaf-left" aria-label="Calendario del mes">
+      <div class="month-plate">
+        <div class="plate-top">
+          <span class="eyebrow">Mes de</span>
+          <div class="month-arrows">
+            <button class="arrow-btn" id="prevMonth" type="button" aria-label="Mes anterior">←</button>
+            <button class="arrow-btn" id="nextMonth" type="button" aria-label="Mes siguiente">→</button>
+          </div>
+        </div>
+        <h2 id="monthName">Noviembre</h2>
+        <div class="plate-bottom">
+          <div class="year-stepper" aria-label="Cambiar año">
+            <button id="prevYear" type="button" aria-label="Año anterior">−</button>
+            <span id="displayYear">2026</span>
+            <button id="nextYear" type="button" aria-label="Año siguiente">+</button>
+          </div>
+          <span class="roman-badge" id="romanMonth" aria-hidden="true">XI</span>
+        </div>
+      </div>
+
+      <div class="calendar">
+        <div class="weekdays" aria-hidden="true">
+          <span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span>
+        </div>
+        <div class="days" id="days" role="grid" aria-label="Días del mes"></div>
+        <div class="calendar-legend" aria-hidden="true">
+          <span><b>●</b> hoy</span>
+          <span><b>○</b> día señalado</span>
+          <span><b>◆</b> efeméride</span>
+        </div>
+      </div>
+
+      <div class="today-card">
+        <div class="today-seal" id="todaySeal">Hoy</div>
+        <div class="today-body">
+          <div class="today-date" id="todayDate">Jueves, 12 de noviembre de 2026</div>
+          <div class="today-meta" id="todayMeta">Día 316 del año · Semana 46</div>
+          <p class="today-note" id="todayNote">La ciudad, mientras tanto, sigue escribiendo su historia.</p>
+          <button class="back-today" id="backToday" type="button" hidden>← Volver a hoy</button>
+        </div>
+      </div>
+
+      <blockquote class="marginalia">
+        «Bogotá no está donde uno la deja: está donde uno la recuerda.»
+        <cite>Nota del almanaque</cite>
+      </blockquote>
+
+      <div class="year-notes" aria-labelledby="yearNotesTitle">
+        <div class="year-notes-head">
+          <span id="yearNotesTitle">Fechas para recordar</span>
+          <span id="yearNotesYear">2026</span>
+        </div>
+        <ul id="yearNotesList"></ul>
+      </div>
+    </section>
+
+    <section class="leaf leaf-right" aria-label="Historia y fotografía del mes">
+      <figure class="plate" id="plate">
+        <span class="plate-tab">Lámina <b id="plateNo">XI</b></span>
+        <div class="plate-inner">
+          <img class="photo" id="photo" alt="" width="1200" height="800">
+          <div class="photo-loading" id="photoLoading">
+            <span>Revelando la lámina</span>
+            <span class="load-sub" id="loadSub">La fotografía viaja desde el archivo. Un momento.</span>
+            <button class="retry" id="retryPhoto" type="button">Reintentar</button>
+          </div>
+          <button class="plate-zoom" id="zoomPhoto" type="button" aria-label="Ampliar la fotografía del mes"></button>
+          <div class="archive-seal" aria-hidden="true">
+            <span>Archivo</span>
+            <strong>B.A.</strong>
+            <span>1538</span>
+          </div>
+        </div>
+        <figcaption>
+          <span id="caption">La Rebeca y el Templete de San Diego, 1950. Colección Banco de la República / Gumersindo Cuéllar Jiménez.</span>
+          <a id="sourceLink" href="https://www.radionacional.co/cultura/historia-colombiana/galeria-la-bogota-de-antano-un-recorrido-por-la-capital" target="_blank" rel="noopener">Ver fuente ↗</a>
+        </figcaption>
+      </figure>
+
+      <article class="story" id="story" aria-live="polite">
+        <span class="story-kicker" id="storyKicker">1943 · La suerte en la calle</span>
+        <h3 id="storyTitle">Los loteros</h3>
+        <div class="story-body" id="storyBody"></div>
+        <div class="fact-box">
+          <span class="fact-label">Sabías que</span>
+          <p id="storyFact"></p>
+        </div>
+        <div class="story-foot">
+          <span class="story-credit" id="storyCredit">Colección Museo de Bogotá · Daniel Rodríguez</span>
+          <button class="text-btn" id="openLightbox" type="button">Ampliar lámina ↗</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <section class="archive" aria-labelledby="archiveTitle">
+    <div class="archive-head">
+      <h4 id="archiveTitle">Archivo de la ciudad</h4>
+      <span>Postales · 1907 — 1930</span>
+    </div>
+    <div class="archive-grid">
+      <a class="archive-card" href="https://commons.wikimedia.org/wiki/File:Postal_-_Plaza_de_Bol%C3%ADvar_-_Palacio_Li%C3%A9vano_-_Bogota.jpg" target="_blank" rel="noopener">
+        <span class="archive-thumb">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Postal_-_Plaza_de_Bol%C3%ADvar_-_Palacio_Li%C3%A9vano_-_Bogota.jpg/960px-Postal_-_Plaza_de_Bol%C3%ADvar_-_Palacio_Li%C3%A9vano_-_Bogota.jpg" alt="Postal de la Plaza de Bolívar y el Palacio Liévano, 1907" loading="lazy" decoding="async">
+        </span>
+        <figcaption>
+          <b>Plaza de Bolívar · 1907</b>
+          El Palacio Liévano y la vida de la plaza, en una postal de comienzos del siglo XX.
+        </figcaption>
+      </a>
+      <a class="archive-card" href="https://commons.wikimedia.org/wiki/File:Postal_-_Bogot%C3%A1_-_Panorama_sur_de_Bogot%C3%A1.jpg" target="_blank" rel="noopener">
+        <span class="archive-thumb">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Postal_-_Bogot%C3%A1_-_Panorama_sur_de_Bogot%C3%A1.jpg/960px-Postal_-_Bogot%C3%A1_-_Panorama_sur_de_Bogot%C3%A1.jpg" alt="Panorama sur de Bogotá, 1910" loading="lazy" decoding="async">
+        </span>
+        <figcaption>
+          <b>Panorama sur · 1910</b>
+          Tejados, torres y cerros: la ciudad antes del automóvil.
+        </figcaption>
+      </a>
+      <a class="archive-card" href="https://commons.wikimedia.org/wiki/File:Postal_Carrera_S%C3%A9ptima_-_Bogot%C3%A1.jpg" target="_blank" rel="noopener">
+        <span class="archive-thumb">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Postal_Carrera_S%C3%A9ptima_-_Bogot%C3%A1.jpg/960px-Postal_Carrera_S%C3%A9ptima_-_Bogot%C3%A1.jpg" alt="Postal de la Carrera Séptima, años treinta" loading="lazy" decoding="async">
+        </span>
+        <figcaption>
+          <b>Carrera Séptima · años 30</b>
+          El corazón comercial de una Bogotá que empezaba a cambiar de escala.
+        </figcaption>
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div>
+      <div class="footer-brand">Bogotá Antigua</div>
+      <p class="footer-note">
+        Un calendario editorial para mirar la ciudad con otros ojos. Las láminas se cargan por demanda
+        y quedan en memoria para cuando las necesites. Fuentes y textos:
+        <a href="https://www.radionacional.co/cultura/historia-colombiana/galeria-la-bogota-de-antano-un-recorrido-por-la-capital" target="_blank" rel="noopener">Radio Nacional de Colombia / Señal Memoria</a>
+        y <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a>. Pieza editorial sin fines comerciales; las imágenes conservan sus créditos.
+      </p>
+    </div>
+    <div class="footer-side">
+      <div class="load-status" aria-live="polite">
+        <span>Láminas en memoria</span>
+        <span class="load-bar" aria-hidden="true"><span id="loadBar"></span></span>
+        <span id="loadCount">0/12</span>
+      </div>
+      <div class="footer-actions">
+        <button id="printBtn" type="button">Imprimir almanaque</button>
+        <button id="footerToday" type="button">Volver a hoy</button>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Fotografía ampliada">
+  <button class="lb-close" id="lbClose" type="button" aria-label="Cerrar">×</button>
+  <figure class="lb-figure">
+    <img id="lbImage" alt="">
+    <figcaption>
+      <span id="lbCaption"></span>
+      <a id="lbSource" href="#" target="_blank" rel="noopener">Ver archivo ↗</a>
+    </figcaption>
+  </figure>
+</div>
+
+<script>
+  const MONTH_NAMES = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+  const MONTH_SHORT = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+  const ROMANS = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
+  const WEEKDAYS = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+  const WEEKDAYS_SHORT = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
+  const ARTICLE = "https://www.radionacional.co/cultura/historia-colombiana/galeria-la-bogota-de-antano-un-recorrido-por-la-capital";
+  const RTVC = "https://rtvc-assets-radionacional-v2.s3.amazonaws.com/s3fs-public/senalradio/articulo-noticia/galeriaimagen/";
+
+  const STORIES = [
+    {
+      name: "Enero",
+      kicker: "1926 · Parque Centenario",
+      title: "La dama de mármol",
+      lede: "En 1926, entre árboles y rieles, apareció en el Parque Centenario una figura que escandalizó y enamoró a la ciudad.",
+      body: [
+        "La Rebeca llegó a Bogotá cuando la ciudad todavía se pensaba como una aldea grande. Era una escultura de mármol, la primera mujer desnuda instalada en el espacio público, y su presencia junto al Templete de San Diego —con Monserrate de fondo— se volvió una postal obligada.",
+        "Su autoría se disputó durante décadas: se atribuyó a Roberto Henao Buriticá y también a la marmolería italiana de Tito Ricci. Hoy, más que una estatua, es un recuerdo de la Bogotá que aprendió a mirarse de otra manera."
+      ],
+      fact: "El Parque Centenario, trazado a finales del siglo XIX, fue perdiendo terreno con la apertura de la Carrera Décima y la Séptima. La Rebeca sobrevivió a esos cambios y sigue mirando la ciudad desde su esquina.",
+      caption: "La Rebeca y el Templete de San Diego, 1950. Colección Banco de la República / Gumersindo Cuéllar Jiménez.",
+      credit: "Colección Banco de la República · Gumersindo Cuéllar Jiménez",
+      img: RTVC + "14_la_rebeca.jpg",
+      pos: "50% 45%",
+      alt: "La Rebeca, escultura de mármol en el Parque Centenario, con Monserrate al fondo"
+    },
+    {
+      name: "Febrero",
+      kicker: "1861–1950 · Calle 10 con carrera 9.ª",
+      title: "El mercado de la Concepción",
+      lede: "Antes de los centros comerciales, Bogotá hacía sus compras en un huerto convertido en plaza.",
+      body: [
+        "Cuando en 1861 se prohibió la venta de alimentos en la Plaza Mayor, el mercado se trasladó al antiguo huerto de La Concepción, en la calle 10 con carrera 9.ª. Allí convivieron durante casi un siglo los pregones, las canastas, los tenderos y las cocinas de la ciudad.",
+        "En 1950 fue demolido para abrir paso a la Carrera Décima. De aquel bullicio solo quedan las fotografías: rostros que negocian, cargan y conversan bajo los techos de zinc."
+      ],
+      fact: "Los mercados fueron también el origen de la cultura gastronómica bogotana: cada plaza tenía su especialidad, sus horarios y su propio calendario de cosechas.",
+      caption: "Plaza central del Mercado de la Concepción, año desconocido. Colección Museo de Bogotá / Daniel Rodríguez.",
+      credit: "Colección Museo de Bogotá · Daniel Rodríguez",
+      img: RTVC + "8_mercado_de_la_concepcion.jpg",
+      pos: "50% 42%",
+      alt: "Mercado de la Concepción lleno de vendedores y compradores"
+    },
+    {
+      name: "Marzo",
+      kicker: "1938 · Chicherías de barrio",
+      title: "El vaso que se compartía",
+      lede: "La chicha fue bebida de fiesta, de trabajo y de resistencia. En las chicherías, Bogotá se contaba sus historias.",
+      body: [
+        "De maíz, yuca o piña, la chicha ya se bebía siglos antes de la llegada de los españoles. En el siglo XX, las chicherías eran espacios populares donde se jugaba a los dados, se cantaba y se cerraban negocios.",
+        "La ciudad letrada la miró con desprecio por su origen indígena y las campañas de higiene terminaron por perseguirla. Aun así, el vaso de chicha siguió pasando de mano en mano: una forma de brindar por lo que la ciudad era y no quería reconocer."
+      ],
+      fact: "En 1948, el mismo año del Bogotazo, Bogotá prohibió por decreto el consumo de leche cruda. La modernización también se bebió, y la chicha quedó del lado de las costumbres que se querían olvidar.",
+      caption: "La chicha servida en un vaso de totuma, 1938. Colección Museo de Bogotá / Daniel Rodríguez.",
+      credit: "Colección Museo de Bogotá · Daniel Rodríguez",
+      img: RTVC + "4_chicha.jpg",
+      pos: "50% 32%",
+      alt: "Persona bebiendo chicha de un vaso artesanal"
+    },
+    {
+      name: "Abril",
+      kicker: "1944 · Plaza de Bolívar",
+      title: "Cuando la ciudad se detuvo",
+      lede: "En 1944, los taxistas bogotanos pararon sus carros para protestar por los uniformes y los taxímetros.",
+      body: [
+        "La protesta no nació de la nada. En 1937, el alcalde Jorge Eliécer Gaitán había ordenado uniformes y taxímetros regulados para el gremio, una medida que terminó con su alcaldía y dejó una herida abierta.",
+        "En 1944, la huelga volvió a llenar la Plaza de Bolívar de carros, sombreros y voces. Cuatro años después, el 9 de abril de 1948, el asesinato de Gaitán desataría el Bogotazo: la ciudad que aparece en esta foto ya estaba anunciando su propia transformación."
+      ],
+      fact: "La huelga de taxistas de 1944 no fue la primera ni la última del gremio. El transporte público ha sido, desde entonces, uno de los grandes escenarios de la protesta bogotana.",
+      caption: "Huelga de taxistas en la Plaza de Bolívar, 1944. Colección Museo de Bogotá / Daniel Rodríguez.",
+      credit: "Colección Museo de Bogotá · Daniel Rodríguez",
+      img: RTVC + "2_huelga_de_taxistas.jpg",
+      pos: "50% 38%",
+      alt: "Multitud y taxistas reunidos en la Plaza de Bolívar durante la huelga de 1944"
+    },
+    {
+      name: "Mayo",
+      kicker: "1940 · Domingos de río",
+      title: "El paseo de olla",
+      lede: "Un río, una olla y la familia entera: el domingo bogotano tenía olor a sancocho.",
+      body: [
+        "Las familias cruzaban la ciudad con ollas, manteles y canastas para instalarse a la orilla de un río. El menú era casi un ritual: gallina, papa, yuca y arracacha, cocidas con el agua del río y servidas sobre la hierba.",
+        "El paseo de olla era también una pausa en la semana: los niños corrían, los mayores conversaban y la ciudad se olvidaba un rato de su propia prisa. Hoy, el gesto sobrevive en los parques y en las riberas que todavía se dejan visitar."
+      ],
+      fact: "El sancocho se cocinaba a fuego de leña y se compartía en platos de loza o de aluminio. No había mantel que no terminara manchado de tierra.",
+      caption: "Celebración del paseo de olla, 1940. Colección Museo de Bogotá / Daniel Rodríguez.",
+      credit: "Colección Museo de Bogotá · Daniel Rodríguez",
+      img: RTVC + "6_paseo_de_olla.jpg",
+      pos: "50% 58%",
+      alt: "Familia reunida alrededor de una olla durante un paseo de olla en 1940"
+    },
+    {
+      name: "Junio",
+      kicker: "1944 · Cancha de tejo",
+      title: "El juego de los abuelos",
+      lede: "El tejo llegó al altiplano mucho antes que los españoles y nunca se fue de las tardes bogotanas.",
+      body: [
+        "Los muiscas lo llamaban turmequé y jugaban con un disco de oro, el zepguagoscua, que se conseguía por trueque. Siglos después, el juego se instaló en las canchas de barrio con una variante ruidosa: la mecha de pólvora que estalla al dar en el blanco.",
+        "En esta foto de 1944, el alcalde Carlos Sanz juega con sus allegados. El tejo ya era entonces una excusa para reunirse, apostar y conversar. Hoy sigue siendo uno de los deportes más bogotanos que existen."
+      ],
+      fact: "El tejo es reconocido como deporte nacional de Colombia. La cancha tradicional mide 18 metros de largo y el blanco se entierra en un cajón de arcilla.",
+      caption: "El alcalde Carlos Sanz juega tejo con sus allegados, 1944. Colección Museo de Bogotá / Daniel Rodríguez.",
+      credit: "Colección Museo de Bogotá · Daniel Rodríguez",
+      img: RTVC + "7_tejo.jpg",
+      pos: "50% 42%",
+      alt: "El alcalde Carlos Sanz jugando tejo con un grupo de hombres"
+    },
+    {
+      name: "Julio",
+      kicker: "20 de julio de 1917 · El progreso llega en tren",
+      title: "La puerta de la Sabana",
+      lede: "Con la Estación de la Sabana, Bogotá dejó de ser un pueblo de mulas y se asomó al siglo XX.",
+      body: [
+        "La estación se inauguró el 20 de julio de 1917 y reemplazó la vieja estación de 1887. Se convirtió en el centro de todas las líneas férreas de la capital: por sus andenes pasaron viajeros, carga, cartas y noticias.",
+        "El tren trajo alimentos, libros y nuevas formas de vivir; también trajo la certeza de que Bogotá ya no podría seguir siendo la misma. La ciudad creció alrededor de los rieles y aprendió a medir las distancias en estaciones."
+      ],
+      fact: "La Estación de la Sabana fue declarada monumento nacional el 26 de septiembre de 1984. Hoy es sede de un centro cultural y del Museo de los Niños de Bogotá.",
+      caption: "Estación de la Sabana, 1945. Colección Museo de Bogotá / Daniel Rodríguez.",
+      credit: "Colección Museo de Bogotá · Daniel Rodríguez",
+      img: RTVC + "16_estacion_de_la_sabana.jpg",
+      pos: "50% 55%",
+      alt: "Andenes y tren en la Estación de la Sabana en 1945"
+    },
+    {
+      name: "Agosto",
+      kicker: "18 de agosto de 1929 · Monserrate",
+      title: "Subir al cielo en ocho minutos",
+      lede: "El funicular de Monserrate cambió la peregrinación a pie por un viaje de ocho minutos sobre la ciudad.",
+      body: [
+        "La obra empezó en 1926 y se inauguró el 18 de agosto de 1929. El recorrido tenía 814 metros y atravesaba 225 metros de túnel; los bogotanos miraban por primera vez su ciudad desde las alturas.",
+        "Antes, los fieles subían a pie por caminos empinados. Después, el funicular se volvió parte del paisaje: una línea que une la ciudad plana con el cerro que la vigila. Todavía hoy, el viaje conserva algo de rito."
+      ],
+      fact: "El funicular asciende por la ladera del cerro entre eucaliptos y niebla. Desde 1929, el viaje sigue siendo uno de los paseos clásicos de Bogotá.",
+      caption: "Estación terminal del funicular a Monserrate, 1929. Colección Banco de la República / Gumersindo Cuéllar Jiménez.",
+      credit: "Colección Banco de la República · Gumersindo Cuéllar Jiménez",
+      img: RTVC + "20_funicular.jpg",
+      pos: "50% 30%",
+      alt: "Estación terminal del funicular de Monserrate en 1929"
+    },
+    {
+      name: "Septiembre",
+      kicker: "21 de septiembre de 1921 · La Fiesta del Estudiante",
+      title: "Pericles y el carnaval",
+      lede: "Durante trece años, septiembre en Bogotá fue sinónimo de carrozas, disfraces y un personaje que terminaba en la hoguera.",
+      body: [
+        "La primera Fiesta del Estudiante se celebró el 21 de septiembre de 1921, organizada por la Universidad Nacional. Había desfiles de carrozas, concursos de música, competencias de natación, bailes y mascaradas.",
+        "Al final se levantaba a Pericles Carnaval, se le hacía un juicio satírico y se le quemaba o se le lanzaba en un globo: la fiesta volvería al año siguiente. La tradición se apagó en 1934, pero las fotos conservan su desorden alegre."
+      ],
+      fact: "El carnaval estudiantil fue una de las primeras fiestas masivas de la ciudad y mezcló la vida universitaria con la fiesta popular.",
+      caption: "Carnavales, 1930. Colección Banco de la República / Gumersindo Cuéllar Jiménez.",
+      credit: "Colección Banco de la República · Gumersindo Cuéllar Jiménez",
+      img: RTVC + "10_carnavales_foto_10.jpg",
+      pos: "50% 45%",
+      alt: "Multitud durante los carnavales bogotanos de 1930"
+    },
+    {
+      name: "Octubre",
+      kicker: "1910 · Rieles y campanas",
+      title: "El tranvía que cosió la ciudad",
+      lede: "En 1910 llegó el tranvía eléctrico y Bogotá aprendió a medir el tiempo en campanadas.",
+      body: [
+        "Antes, los tranvías eran tirados por mulas. Con la electricidad, la ciudad se llenó de rieles, postes y cables; el tranvía unió los barrios con el centro y cambió la forma de trabajar, de comprar y de visitar a la familia.",
+        "En 1938 llegaron los carros llamados «Lorencitas», de techo plateado, en honor a Lorencita Villegas de Santos. La fotografía de 1910 muestra el momento exacto en que la ciudad se cosía con hierro."
+      ],
+      fact: "La red de tranvías llegó a tener varias líneas y fue el principal transporte público de Bogotá hasta mediados del siglo XX, cuando los buses y los carros empezaron a reemplazarla.",
+      caption: "Instalación de rieles del tranvía, 1910. Colección Museo de Bogotá / Luis Alberto Acuña.",
+      credit: "Colección Museo de Bogotá · Luis Alberto Acuña",
+      img: RTVC + "17_instalacion_de_rieles.jpg",
+      pos: "50% 50%",
+      alt: "Obreros instalando los rieles del tranvía en 1910"
+    },
+    {
+      name: "Noviembre",
+      kicker: "1943 · La suerte en la calle",
+      title: "Los loteros",
+      lede: "Antes de los billetes digitales, la esperanza se compraba en la esquina, a voces.",
+      body: [
+        "Los loteros recorrían el centro con sus talonarios y pregonaban el número de la suerte. En 1943, cuando se tomó esta foto, la lotería ya era una vieja costumbre bogotana: la primera rifa pública se había establecido en 1792 y sorteaba mensualmente un fondo de mil pesos.",
+        "El oficio sobrevive en las esquinas, junto a las chicherías, los cafés y los vendedores de empanadas. Cada billete es un pequeño pacto con la fortuna y una excusa para conversar con un desconocido."
+      ],
+      fact: "La Lotería de Bogotá fue creada en 1915. Sus sorteos se convirtieron en una cita fija de la radio y, más tarde, de la televisión.",
+      caption: "Los loteros de Bogotá, 1943. Colección Museo de Bogotá / Daniel Rodríguez.",
+      credit: "Colección Museo de Bogotá · Daniel Rodríguez",
+      img: RTVC + "3_loteros_de_bogota.jpg",
+      pos: "50% 38%",
+      alt: "Loteros vendiendo billetes en una esquina de Bogotá en 1943"
+    },
+    {
+      name: "Diciembre",
+      kicker: "1878–1947 · La voz a distancia",
+      title: "La ciudad que aprendió a llamar",
+      lede: "Bogotá habló por teléfono por primera vez en 1878. La distancia empezó a encogerse.",
+      body: [
+        "La primera comunicación telefónica experimental se hizo en 1878; en 1885 se activó el servicio en la ciudad. Al principio fue un lujo de oficinas y comercios, pero pronto cambió la manera de hacer negocios, de enamorarse y de avisar que se llegaba tarde.",
+        "En 1947, el Gobierno adquirió la compañía telefónica central y creó Telecom. Las centrales manuales, las operadoras y los cables que cruzaban las calles se volvieron paisaje. Esta imagen de los años cuarenta muestra a una ciudad que ya no necesitaba gritar para ser escuchada."
+      ],
+      fact: "Las primeras llamadas requerían una operadora que conectaba físicamente los cables. Una conversación podía tardar varios minutos en establecerse.",
+      caption: "Central de telecomunicaciones, años 40. Colección Museo de Bogotá / Daniel Rodríguez.",
+      credit: "Colección Museo de Bogotá · Daniel Rodríguez",
+      img: RTVC + "12_telecomunicaciones.jpg",
+      pos: "50% 40%",
+      alt: "Operadora telefónica trabajando en una central de comunicaciones en los años cuarenta"
+    }
+  ];
+
+  const EPHEMERIDES = {
+    "0-1": "Año nuevo. La ciudad estrena calendario y promesas.",
+    "1-14": "Día de San Valentín. Las cartas también viajaban en tranvía.",
+    "3-9": "1948 · El Bogotazo: tras el asesinato de Jorge Eliécer Gaitán, el centro de Bogotá arde.",
+    "4-1": "Día del Trabajo. Las plazas bogotanas han sido escenario de todas las luchas.",
+    "6-20": "1810 · Grito de la Independencia. Bogotá deja de ser colonia española.",
+    "7-6": "1538 · Fundación de Santafé de Bogotá por Gonzalo Jiménez de Quesada.",
+    "7-18": "1929 · Se inaugura el funicular de Monserrate.",
+    "8-21": "1921 · Primera Fiesta del Estudiante, el germen del carnaval bogotano.",
+    "9-12": "Día de la Raza. Una fecha para pensar el encuentro —y el desencuentro— de culturas.",
+    "10-1": "Día de Todos los Santos. Las flores llegan a los cementerios de la ciudad.",
+    "11-8": "Inmaculada Concepción. Las calles se llenan de velas y novenas.",
+    "11-25": "Navidad. La ciudad se vuelve pesebre, luces y natilla.",
+    "11-31": "Nochevieja. Se cierra el almanaque y se abre otra página."
+  };
+
+  const YEAR_NOTES = [
+    { m: 3, d: 9, text: "El Bogotazo cambia para siempre el centro de la ciudad." },
+    { m: 6, d: 20, text: "Grito de la Independencia: Bogotá deja de ser colonia." },
+    { m: 7, d: 6, text: "Fundación de Santafé de Bogotá, hace casi cinco siglos." },
+    { m: 7, d: 18, text: "Se inaugura el funicular que sube a Monserrate." },
+    { m: 8, d: 21, text: "Primera Fiesta del Estudiante y su carnaval." }
+  ];
+
+  const today = new Date();
+  const todayKey = dateKey(today.getFullYear(), today.getMonth(), today.getDate());
+  let viewYear = today.getFullYear();
+  let viewMonth = today.getMonth();
+  let selected = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  let currentStory = null;
+  let photoToken = 0;
+  let turnTimer = null;
+  let loadStarted = false;
+  const loadedImages = new Set();
+  const pendingImages = new Set();
+  const failedImages = new Set();
+
+  const $ = (id) => document.getElementById(id);
+  const monthNav = $("monthNav");
+  const daysEl = $("days");
+  const photo = $("photo");
+  const plate = $("plate");
+  const photoLoading = $("photoLoading");
+  const loadSub = $("loadSub");
+  const retryPhoto = $("retryPhoto");
+
+  function pad(n){ return String(n).padStart(2, "0"); }
+  function dateKey(y, m, d){ return y + "-" + pad(m + 1) + "-" + pad(d); }
+  function sameDay(a, b){ return a && b && a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate(); }
+  function daysInMonth(y, m){ return new Date(y, m + 1, 0).getDate(); }
+  function mondayIndex(y, m, d){ return (new Date(y, m, d).getDay() + 6) % 7; }
+  function dayOfYear(d){
+    const start = new Date(d.getFullYear(), 0, 0);
+    return Math.floor((d - start) / 86400000);
+  }
+  function weekOfYear(d){
+    const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    const dayNum = date.getUTCDay() || 7;
+    date.setUTCDate(date.getUTCDate() + 4 - dayNum);
+    const yearStart = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
+    return Math.ceil((((date - yearStart) / 86400000) + 1) / 7);
+  }
+  function toRoman(num){
+    if (num < 1 || num > 3999) return String(num);
+    const table = [[1000,"M"],[900,"CM"],[500,"D"],[400,"CD"],[100,"C"],[90,"XC"],[50,"L"],[40,"XL"],[10,"X"],[9,"IX"],[5,"V"],[4,"IV"],[1,"I"]];
+    let out = "";
+    for (const [value, glyph] of table) {
+      while (num >= value) { out += glyph; num -= value; }
+    }
+    return out;
+  }
+  function formatLongDate(d){
+    return WEEKDAYS[d.getDay()] + ", " + d.getDate() + " de " + MONTH_NAMES[d.getMonth()].toLowerCase() + " de " + d.getFullYear();
+  }
+  function escapeHtml(str){
+    return String(str).replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  }
+
+  function buildMonthNav(){
+    monthNav.innerHTML = STORIES.map((story, i) => (
+      '<button class="month-tab" type="button" role="tab" data-month="' + i + '" aria-label="' + story.name + '">' +
+        '<span class="mt-roman">' + ROMANS[i] + '</span>' +
+        '<span class="mt-name">' + MONTH_SHORT[i] + '</span>' +
+      '</button>'
+    )).join("");
+    monthNav.addEventListener("click", (event) => {
+      const btn = event.target.closest(".month-tab");
+      if (!btn) return;
+      const nextMonth = Number(btn.dataset.month);
+      if (nextMonth === viewMonth) return;
+      startPageTurn(nextMonth > viewMonth ? "next" : "prev");
+      viewMonth = nextMonth;
+      selected = defaultSelection();
+      render(true);
+    });
+  }
+
+  function defaultSelection(){
+    if (viewYear === today.getFullYear() && viewMonth === today.getMonth()) {
+      return new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    }
+    return null;
+  }
+
+  function renderCalendar(){
+    const firstOffset = mondayIndex(viewYear, viewMonth, 1);
+    const total = daysInMonth(viewYear, viewMonth);
+    const cells = [];
+    for (let i = 0; i < firstOffset; i++) {
+      cells.push('<span class="day blank" aria-hidden="true"></span>');
+    }
+    for (let d = 1; d <= total; d++) {
+      const date = new Date(viewYear, viewMonth, d);
+      const key = dateKey(viewYear, viewMonth, d);
+      const isToday = sameDay(date, today);
+      const isSelected = sameDay(date, selected);
+      const isWeekend = date.getDay() === 0 || date.getDay() === 6;
+      const hasEvent = Boolean(EPHEMERIDES[viewMonth + "-" + d]);
+      const classes = ["day"];
+      if (isWeekend) classes.push("is-weekend");
+      if (isToday) classes.push("is-today");
+      if (isSelected) classes.push("is-selected");
+      if (hasEvent) classes.push("has-event");
+      cells.push(
+        '<button class="' + classes.join(" ") + '" type="button" role="gridcell" data-date="' + key + '" ' +
+        'aria-label="' + formatLongDate(date) + (hasEvent ? ". " + escapeHtml(EPHEMERIDES[viewMonth + "-" + d]) : "") + '" ' +
+        'aria-current="' + (isToday ? "date" : "false") + '">' +
+        '<span class="num">' + d + '</span></button>'
+      );
+    }
+    const remainder = cells.length % 7;
+    if (remainder !== 0) {
+      for (let i = 0; i < 7 - remainder; i++) cells.push('<span class="day blank" aria-hidden="true"></span>');
+    }
+    daysEl.innerHTML = cells.join("");
+  }
+
+  function renderTodayCard(){
+    const shown = selected;
+    const isCurrentMonth = viewYear === today.getFullYear() && viewMonth === today.getMonth();
+    const isToday = shown && sameDay(shown, today);
+    $("todaySeal").textContent = isToday ? "Hoy" : "Día";
+    if (shown) {
+      $("todayDate").textContent = formatLongDate(shown);
+      $("todayMeta").textContent = "Día " + dayOfYear(shown) + " del año · Semana " + weekOfYear(shown);
+      const event = EPHEMERIDES[shown.getMonth() + "-" + shown.getDate()];
+      $("todayNote").innerHTML = event
+        ? '<b>◆ Efeméride</b> ' + escapeHtml(event)
+        : "Sin efeméride registrada para este día. La ciudad, mientras tanto, sigue escribiendo su historia.";
+    } else {
+      $("todayDate").textContent = MONTH_NAMES[viewMonth] + " de " + viewYear;
+      $("todayMeta").textContent = isCurrentMonth ? "Mes en curso" : "Mes en consulta";
+      $("todayNote").innerHTML = "Selecciona un día del calendario para leer su efeméride.";
+    }
+    $("backToday").hidden = sameDay(shown, today);
+  }
+
+  function renderStory(){
+    const story = STORIES[viewMonth];
+    currentStory = story;
+    $("storyKicker").textContent = story.kicker;
+    $("storyTitle").textContent = story.title;
+    $("storyBody").innerHTML =
+      '<p class="lede">' + escapeHtml(story.lede) + '</p>' +
+      story.body.map((paragraph) => '<p>' + escapeHtml(paragraph) + '</p>').join("");
+    $("storyFact").textContent = story.fact;
+    $("caption").textContent = story.caption;
+    $("storyCredit").textContent = story.credit;
+    $("sourceLink").href = ARTICLE;
+    $("plateNo").textContent = ROMANS[viewMonth];
+    $("openLightbox").setAttribute("aria-label", "Ampliar la lámina: " + story.title);
+    $("story").classList.remove("fade-in");
+    void $("story").offsetWidth;
+    $("story").classList.add("fade-in");
+  }
+
+  function renderYearNotes(){
+    $("yearNotesYear").textContent = viewYear;
+    $("yearNotesList").innerHTML = YEAR_NOTES.map((note) => (
+      '<li><button class="year-note-btn" type="button" data-m="' + note.m + '" data-d="' + note.d + '">' +
+        '<span class="yn-date">' + note.d + '<small>' + MONTH_SHORT[note.m] + '</small></span>' +
+        '<span class="yn-text">' + escapeHtml(note.text) + '</span>' +
+      '</button></li>'
+    )).join("");
+  }
+
+  function updatePhoto(force){
+    const story = STORIES[viewMonth];
+    const nextSrc = story.img;
+    if (!force && photo.dataset.src === nextSrc) {
+      photo.style.objectPosition = story.pos;
+      return;
+    }
+    photo.dataset.src = nextSrc;
+    photo.alt = story.alt;
+    photo.style.objectPosition = story.pos;
+    plate.classList.remove("is-loaded");
+    photoLoading.classList.remove("has-error");
+    loadSub.textContent = "La fotografía viaja desde el archivo. Un momento.";
+    photoLoading.hidden = false;
+    const token = ++photoToken;
+
+    const preload = new Image();
+    preload.decoding = "async";
+    if ("fetchPriority" in preload) preload.fetchPriority = "high";
+    preload.onload = () => {
+      if (token !== photoToken) return;
+      photo.src = nextSrc;
+      loadedImages.add(viewMonth);
+      updateLoadCounter();
+      requestAnimationFrame(() => {
+        plate.classList.add("is-loaded");
+      });
+    };
+    preload.onerror = () => {
+      if (token !== photoToken) return;
+      failedImages.add(viewMonth);
+      plate.classList.remove("is-loaded");
+      photoLoading.classList.add("has-error");
+      loadSub.textContent = "No se pudo cargar la lámina. Revisa la conexión y vuelve a intentarlo.";
+      photoLoading.hidden = false;
+      updateLoadCounter();
+    };
+    preload.src = nextSrc;
+    schedulePrefetch();
+  }
+
+  function updateLoadCounter(){
+    const total = STORIES.length;
+    const done = loadedImages.size + failedImages.size;
+    $("loadCount").textContent = loadedImages.size + "/" + total;
+    $("loadBar").style.width = Math.round((done / total) * 100) + "%";
+  }
+
+  function preloadStory(index){
+    if (index < 0 || index >= STORIES.length) return;
+    if (loadedImages.has(index) || pendingImages.has(index) || failedImages.has(index)) return;
+    if (currentStory && STORIES[index].img === currentStory.img) return;
+    pendingImages.add(index);
+    const img = new Image();
+    img.decoding = "async";
+    if ("fetchPriority" in img) img.fetchPriority = "low";
+    img.onload = () => {
+      pendingImages.delete(index);
+      loadedImages.add(index);
+      updateLoadCounter();
+    };
+    img.onerror = () => {
+      pendingImages.delete(index);
+      failedImages.add(index);
+      updateLoadCounter();
+    };
+    img.src = STORIES[index].img;
+  }
+
+  function schedulePrefetch(){
+    if (loadStarted) return;
+    loadStarted = true;
+    const neighbors = [viewMonth + 1, viewMonth - 1].filter((i) => i >= 0 && i < 12);
+    setTimeout(() => {
+      neighbors.forEach(preloadStory);
+      if (navigator.connection && navigator.connection.saveData) return;
+      const rest = STORIES.map((_, i) => i).filter((i) => i !== viewMonth && !neighbors.includes(i));
+      let cursor = 0;
+      const tick = () => {
+        if (cursor >= rest.length) return;
+        preloadStory(rest[cursor++]);
+        setTimeout(tick, 420);
+      };
+      setTimeout(tick, 1200);
+    }, 900);
+  }
+
+  function render(animate){
+    $("monthName").textContent = MONTH_NAMES[viewMonth];
+    $("romanMonth").textContent = ROMANS[viewMonth];
+    $("displayYear").textContent = viewYear;
+    $("editionYear").textContent = toRoman(viewYear);
+    $("issueLine").textContent = "Almanaque para el año " + viewYear;
+    document.title = "Bogotá Antigua · " + MONTH_NAMES[viewMonth] + " de " + viewYear;
+    monthNav.querySelectorAll(".month-tab").forEach((btn, i) => {
+      const active = i === viewMonth;
+      btn.setAttribute("aria-current", active ? "true" : "false");
+      btn.setAttribute("aria-selected", active ? "true" : "false");
+      btn.tabIndex = active ? 0 : -1;
+    });
+    renderCalendar();
+    renderTodayCard();
+    renderStory();
+    renderYearNotes();
+    updatePhoto(false);
+    scrollActiveTab(animate);
+    if (animate) {
+      daysEl.classList.remove("fade-in");
+      void daysEl.offsetWidth;
+      daysEl.classList.add("fade-in");
+    }
+  }
+
+  function scrollActiveTab(smooth){
+    const activeTab = monthNav.querySelector('.month-tab[aria-current="true"]');
+    if (!activeTab) return;
+    const target = activeTab.offsetLeft - (monthNav.clientWidth - activeTab.offsetWidth) / 2;
+    monthNav.scrollTo({ left: Math.max(0, target), behavior: smooth ? "smooth" : "auto" });
+  }
+
+  function clearPageTurn(){
+    document.querySelectorAll(".page-turn").forEach((el) => el.remove());
+    document.querySelectorAll(".leaf.is-revealing").forEach((el) => el.classList.remove("is-revealing"));
+    if (turnTimer) { clearTimeout(turnTimer); turnTimer = null; }
+  }
+
+  function startPageTurn(direction){
+    if (!direction) return false;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
+
+    const isSingle = window.matchMedia("(max-width: 760px)").matches;
+    const leftLeaf = document.querySelector(".leaf-left");
+    const rightLeaf = document.querySelector(".leaf-right");
+    const turningLeaf = isSingle ? leftLeaf : (direction === "next" ? rightLeaf : leftLeaf);
+    const otherLeaf = isSingle ? null : (direction === "next" ? leftLeaf : rightLeaf);
+    if (!turningLeaf || !turningLeaf.clientWidth || !turningLeaf.clientHeight) return false;
+
+    clearPageTurn();
+    const width = turningLeaf.clientWidth;
+    const height = turningLeaf.clientHeight;
+    const clone = turningLeaf.cloneNode(true);
+
+    clone.querySelectorAll("[id]").forEach((el) => el.removeAttribute("id"));
+    clone.querySelectorAll("button, a, input, select, textarea").forEach((el) => el.setAttribute("tabindex", "-1"));
+    clone.querySelectorAll("[aria-live]").forEach((el) => el.removeAttribute("aria-live"));
+    clone.removeAttribute("aria-live");
+    clone.setAttribute("aria-hidden", "true");
+    clone.classList.add("turn-content");
+    clone.style.width = "100%";
+    clone.style.height = "100%";
+
+    const overlay = document.createElement("div");
+    overlay.className = "page-turn " + direction;
+    overlay.setAttribute("aria-hidden", "true");
+    overlay.style.width = width + "px";
+    overlay.style.height = height + "px";
+    overlay.innerHTML = '<div class="turn-sheet"><div class="turn-face front"></div><div class="turn-face back"><span class="back-mark">— ' + ROMANS[viewMonth] + ' —</span></div></div>';
+    overlay.querySelector(".turn-face.front").appendChild(clone);
+    const sheet = overlay.querySelector(".turn-sheet");
+    turningLeaf.appendChild(overlay);
+    void overlay.offsetWidth;
+
+    if (otherLeaf) {
+      otherLeaf.classList.remove("is-revealing");
+      void otherLeaf.offsetWidth;
+      otherLeaf.classList.add("is-revealing");
+    }
+
+    const cleanup = () => {
+      if (!overlay.isConnected) return;
+      overlay.remove();
+      if (otherLeaf) otherLeaf.classList.remove("is-revealing");
+      if (turnTimer) { clearTimeout(turnTimer); turnTimer = null; }
+    };
+    sheet.addEventListener("animationend", (event) => {
+      if (event.target === sheet) cleanup();
+    });
+    turnTimer = setTimeout(cleanup, 1300);
+    return true;
+  }
+
+  function selectDate(key){
+    const parts = key.split("-").map(Number);
+    selected = new Date(parts[0], parts[1] - 1, parts[2]);
+    if (parts[0] !== viewYear || parts[1] - 1 !== viewMonth) {
+      viewYear = parts[0];
+      viewMonth = parts[1] - 1;
+      render(true);
+      return;
+    }
+    renderCalendar();
+    renderTodayCard();
+  }
+
+  function goToday(){
+    const targetYear = today.getFullYear();
+    const targetMonth = today.getMonth();
+    if (targetYear !== viewYear || targetMonth !== viewMonth) {
+      const direction = (targetYear > viewYear || (targetYear === viewYear && targetMonth > viewMonth)) ? "next" : "prev";
+      startPageTurn(direction);
+    }
+    viewYear = targetYear;
+    viewMonth = targetMonth;
+    selected = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    loadStarted = false;
+    render(true);
+    schedulePrefetch();
+  }
+
+  function changeMonth(delta){
+    startPageTurn(delta > 0 ? "next" : "prev");
+    let next = viewMonth + delta;
+    if (next < 0) { next = 11; viewYear--; }
+    else if (next > 11) { next = 0; viewYear++; }
+    viewMonth = next;
+    selected = defaultSelection();
+    loadStarted = false;
+    render(true);
+    schedulePrefetch();
+  }
+
+  function changeYear(delta){
+    viewYear += delta;
+    selected = defaultSelection();
+    render(true);
+  }
+
+  function openLightbox(){
+    if (!currentStory) return;
+    const lb = $("lightbox");
+    $("lbImage").src = currentStory.img;
+    $("lbImage").alt = currentStory.alt;
+    $("lbCaption").textContent = currentStory.caption;
+    $("lbSource").href = ARTICLE;
+    lb.classList.add("is-open");
+    lb.setAttribute("aria-hidden", "false");
+    document.body.classList.add("no-scroll");
+    $("lbClose").focus();
+  }
+
+  function closeLightbox(){
+    const lb = $("lightbox");
+    if (!lb.classList.contains("is-open")) return;
+    lb.classList.remove("is-open");
+    lb.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("no-scroll");
+    $("zoomPhoto").focus();
+  }
+
+  buildMonthNav();
+
+  monthNav.addEventListener("keydown", (event) => {
+    const current = document.activeElement;
+    if (!current || !current.classList.contains("month-tab")) return;
+    if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) return;
+    event.preventDefault();
+
+    const oldMonth = viewMonth;
+    const oldYear = viewYear;
+    if (event.key === "ArrowRight") {
+      if (viewMonth === 11) { viewMonth = 0; viewYear++; } else { viewMonth++; }
+    } else if (event.key === "ArrowLeft") {
+      if (viewMonth === 0) { viewMonth = 11; viewYear--; } else { viewMonth--; }
+    } else if (event.key === "Home") {
+      viewMonth = 0;
+    } else {
+      viewMonth = 11;
+    }
+
+    if (viewMonth !== oldMonth || viewYear !== oldYear) {
+      startPageTurn(viewYear > oldYear || (viewYear === oldYear && viewMonth > oldMonth) ? "next" : "prev");
+    }
+    selected = defaultSelection();
+    render(true);
+    monthNav.querySelector('[data-month="' + viewMonth + '"]').focus();
+  });
+
+  daysEl.addEventListener("click", (event) => {
+    const btn = event.target.closest(".day[data-date]");
+    if (btn) selectDate(btn.dataset.date);
+  });
+
+  $("prevMonth").addEventListener("click", () => changeMonth(-1));
+  $("nextMonth").addEventListener("click", () => changeMonth(1));
+  $("prevYear").addEventListener("click", () => changeYear(-1));
+  $("nextYear").addEventListener("click", () => changeYear(1));
+  $("todayBtn").addEventListener("click", goToday);
+  $("backToday").addEventListener("click", goToday);
+  $("footerToday").addEventListener("click", goToday);
+  $("printBtn").addEventListener("click", () => window.print());
+  $("zoomPhoto").addEventListener("click", openLightbox);
+  $("openLightbox").addEventListener("click", openLightbox);
+  $("lbClose").addEventListener("click", closeLightbox);
+  $("lightbox").addEventListener("click", (event) => {
+    if (event.target === $("lightbox")) closeLightbox();
+  });
+  $("yearNotesList").addEventListener("click", (event) => {
+    const btn = event.target.closest(".year-note-btn");
+    if (!btn) return;
+    const nextMonth = Number(btn.dataset.m);
+    if (nextMonth !== viewMonth) startPageTurn(nextMonth > viewMonth ? "next" : "prev");
+    viewMonth = nextMonth;
+    selected = new Date(viewYear, viewMonth, Number(btn.dataset.d));
+    render(true);
+    if (window.innerWidth < 760) {
+      document.querySelector(".month-plate").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
+  retryPhoto.addEventListener("click", () => updatePhoto(true));
+  photo.addEventListener("error", () => {
+    failedImages.add(viewMonth);
+    plate.classList.remove("is-loaded");
+    photoLoading.classList.add("has-error");
+    loadSub.textContent = "La lámina no respondió. Intenta de nuevo.";
+    photoLoading.hidden = false;
+    updateLoadCounter();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeLightbox();
+  });
+
+  updateLoadCounter();
+  render(false);
+  setTimeout(schedulePrefetch, 600);
+</script>
+</body>
+</html>
