@@ -176,6 +176,27 @@
     color: var(--muted);
     text-transform: uppercase;
   }
+  .ed-download{
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 8px;
+    padding: 4px 8px;
+    border: 1px solid var(--red);
+    background: transparent;
+    color: var(--red);
+    font-family: var(--type);
+    font-size: .46rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    line-height: 1.3;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background .18s ease, color .18s ease;
+  }
+  .ed-download:hover{ background: var(--red); color: #fff8e9; }
+  .ed-download:disabled{ opacity: .55; cursor: wait; }
+  .ed-download-row{ display: block; }
   .subtitle{
     margin: 14px auto 0;
     max-width: 620px;
@@ -1111,6 +1132,7 @@
   .footer-actions{
     margin-top: 7px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-end;
     gap: 12px;
   }
@@ -1126,6 +1148,24 @@
     cursor: pointer;
     text-decoration: underline;
     text-underline-offset: 3px;
+  }
+  .footer-actions .download-action{
+    padding: 4px 9px;
+    border: 1px solid var(--red);
+    background: var(--red);
+    color: #fff8e9;
+    text-decoration: none;
+  }
+  .footer-actions .download-action:hover{ background: var(--red-deep); }
+  .footer-actions .download-action:disabled{ opacity: .55; cursor: wait; }
+  .download-note{
+    margin-top: 5px;
+    text-align: right;
+    font-family: var(--type);
+    font-size: .42rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
   }
 
   /* ---------- lightbox ---------- */
@@ -1280,7 +1320,20 @@
       border-left: 0;
       text-align: center;
     }
+    .edition{
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: baseline;
+    }
+    .ed-download-row{
+      flex: 0 0 100%;
+      display: flex;
+      justify-content: center;
+    }
     .edition .ed-year{ font-size: 1.2rem; }
+    .ed-download{ margin-top: 5px; font-size: .5rem; padding: 5px 10px; }
     h1{ font-size: clamp(2.5rem, 13vw, 3.8rem); }
     .topline{ gap: 8px; font-size: .47rem; letter-spacing: .15em; }
     .subtitle{ margin-top: 10px; font-size: .98rem; }
@@ -1314,6 +1367,7 @@
     .footer{ flex-direction: column; gap: 10px; }
     .footer-side{ text-align: left; width: 100%; }
     .load-status, .footer-actions{ justify-content: flex-start; }
+    .download-note{ text-align: left; }
     .lb-figure figcaption{ flex-direction: column; gap: 6px; }
   }
 
@@ -1338,6 +1392,8 @@
     .month-plate h2{ font-size: 2.5rem; }
     .month-tab{ flex-basis: 38px; min-width: 36px; }
     .today-btn{ padding: 7px 7px; }
+    .ed-download{ padding: 5px 8px; font-size: .46rem; }
+    .footer-actions{ gap: 8px; }
     .day{ font-size: .9rem; }
     .day .num{ width: 28px; height: 28px; }
     .plate-inner{ height: clamp(210px, 68vw, 240px); }
@@ -1418,7 +1474,7 @@
   /* ---------- impresión ---------- */
   @media print{
     body{ background: #fff; padding: 0; }
-    body::before, .monthnav, .today-btn, .archive, .footer-actions, .load-status, .lb-close, .plate-zoom, .month-arrows, .year-stepper button, .back-today{ display: none !important; }
+    body::before, .monthnav, .today-btn, .archive, .footer-actions, .load-status, .ed-download, .lb-close, .plate-zoom, .month-arrows, .year-stepper button, .back-today{ display: none !important; }
     .almanac{ box-shadow: none; border: 1px solid #000; width: 100%; padding: 24px; }
     .almanac::before, .almanac::after, .corner, .leaf-right::before{ display: none; }
     .spread{ grid-template-columns: 1fr 1fr; gap: 22px; }
@@ -1452,6 +1508,7 @@
         <span class="ed-label">Año</span>
         <span class="ed-year" id="editionYear">MMXXVI</span>
         <span class="ed-note">Bogotá · D. C.</span>
+        <span class="ed-download-row"><button class="ed-download" type="button" data-download title="Descarga una copia con las fotos incluidas para abrirla sin internet">↓ Descargar app</button></span>
       </div>
     </div>
 
@@ -1624,9 +1681,11 @@
         <span id="loadCount">0/12</span>
       </div>
       <div class="footer-actions">
+        <button class="download-action" type="button" data-download title="Descarga una copia con las fotos incluidas para abrirla sin internet">Descargar app ↓</button>
         <button id="printBtn" type="button">Imprimir almanaque</button>
         <button id="footerToday" type="button">Volver a hoy</button>
       </div>
+      <div class="download-note">Copia local con las fotos incluidas</div>
     </div>
   </footer>
 </div>
@@ -1650,6 +1709,9 @@
   const WEEKDAYS_SHORT = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
   const ARTICLE = "https://www.radionacional.co/cultura/historia-colombiana/galeria-la-bogota-de-antano-un-recorrido-por-la-capital";
   const RTVC = "https://rtvc-assets-radionacional-v2.s3.amazonaws.com/s3fs-public/senalradio/articulo-noticia/galeriaimagen/";
+  const OFFLINE_FILE = "bogota-antigua-offline.html";
+  const DOWNLOAD_FILENAME = "Bogota-Antigua.html";
+  const isOfflineApp = document.documentElement.dataset.offline === "true";
 
   const STORIES = [
     {
@@ -2259,6 +2321,66 @@
     render(true);
   }
 
+
+  async function downloadApp(event){
+    if (event) event.preventDefault();
+    const buttons = Array.from(document.querySelectorAll("[data-download]"));
+    const originals = new Map(buttons.map((button) => [button, button.innerHTML]));
+    buttons.forEach((button) => {
+      button.disabled = true;
+      button.innerHTML = "Preparando…";
+    });
+
+    const restore = () => {
+      buttons.forEach((button) => {
+        button.disabled = false;
+        button.innerHTML = originals.get(button);
+      });
+    };
+
+    try {
+      let html = null;
+      if (!isOfflineApp) {
+        try {
+          const response = await fetch(OFFLINE_FILE, { cache: "no-store" });
+          if (response.ok) html = await response.text();
+        } catch (error) {
+          // Si se abrió como archivo local o el archivo offline no está, se serializa la app actual.
+        }
+      }
+      if (!html) html = serializeApp();
+
+      const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = DOWNLOAD_FILENAME;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 4000);
+
+      buttons.forEach((button) => { button.innerHTML = "Descargado ✓"; });
+      setTimeout(restore, 1800);
+    } catch (error) {
+      buttons.forEach((button) => { button.innerHTML = "No se pudo descargar"; });
+      setTimeout(restore, 2200);
+    }
+  }
+
+  function serializeApp(){
+    const clone = document.documentElement.cloneNode(true);
+    clone.querySelectorAll(".page-turn").forEach((el) => el.remove());
+    clone.querySelectorAll(".is-revealing, .fade-in").forEach((el) => el.classList.remove("is-revealing", "fade-in"));
+    clone.querySelectorAll(".photo-loading").forEach((el) => {
+      el.hidden = true;
+      el.classList.remove("has-error");
+    });
+    clone.querySelectorAll(".plate").forEach((el) => el.classList.add("is-loaded"));
+    if (isOfflineApp) clone.setAttribute("data-offline", "true");
+    return "<!DOCTYPE html>\n" + clone.outerHTML;
+  }
+
   function openLightbox(){
     if (!currentStory) return;
     const lb = $("lightbox");
@@ -2322,6 +2444,7 @@
   $("backToday").addEventListener("click", goToday);
   $("footerToday").addEventListener("click", goToday);
   $("printBtn").addEventListener("click", () => window.print());
+  document.querySelectorAll("[data-download]").forEach((button) => button.addEventListener("click", downloadApp));
   $("zoomPhoto").addEventListener("click", openLightbox);
   $("openLightbox").addEventListener("click", openLightbox);
   $("lbClose").addEventListener("click", closeLightbox);
