@@ -287,6 +287,56 @@
   }
   .today-btn:hover{ background: var(--red); color: #fff8e9; }
 
+
+  .agenda-strip{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 5px 12px;
+    margin: 10px 0 0;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(165, 28, 28, .045), rgba(165, 28, 28, 0));
+    font-family: var(--type);
+    font-size: .57rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .agenda-title{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--red);
+    letter-spacing: .14em;
+    white-space: nowrap;
+  }
+  .agenda-icon{
+    display: grid;
+    place-items: center;
+    width: 17px;
+    height: 17px;
+  }
+  .agenda-icon svg{ width: 15px; height: 15px; display: block; }
+  .agenda-link{
+    padding: 2px 0;
+    border: 0;
+    border-bottom: 1px solid transparent;
+    background: none;
+    color: var(--red);
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: border-color .18s ease, color .18s ease;
+  }
+  .agenda-link:hover{ border-bottom-color: var(--red); color: var(--red-deep); }
+  .agenda-link span{ font-family: var(--serif); font-size: 1.1em; margin-left: 2px; }
+  .agenda-dot{ color: var(--red); font-size: .45rem; }
+  .agenda-note{ color: var(--muted); font-size: .48rem; letter-spacing: .06em; }
+
   /* ---------- libro ---------- */
   .spread{
     display: grid;
@@ -564,6 +614,7 @@
     color: var(--muted);
   }
   .calendar-legend b{ color: var(--red); font-weight: 400; }
+  .legend-swipe{ display: none; margin-left: auto; color: var(--red); }
 
   /* ---------- hoy ---------- */
   .today-card{
@@ -957,6 +1008,7 @@
   }
   .story-foot{
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: 15px;
@@ -971,6 +1023,13 @@
     line-height: 1.5;
     text-transform: uppercase;
     color: var(--muted);
+  }
+  .story-actions{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
   }
   .text-btn{
     flex: 0 0 auto;
@@ -1211,6 +1270,7 @@
   }
 
   @media (pointer: coarse){
+    .legend-swipe{ display: inline; }
     .month-tab{ min-height: 40px; }
     .arrow-btn{ width: 36px; height: 36px; }
     .today-btn{ min-height: 38px; }
@@ -1241,9 +1301,8 @@
   .install-fab{
     position: fixed;
     z-index: 45;
-    left: 50%;
+    right: max(18px, env(safe-area-inset-right, 0px));
     bottom: max(18px, env(safe-area-inset-bottom, 0px));
-    transform: translateX(-50%);
     display: inline-flex;
     align-items: center;
     gap: 10px;
@@ -1266,13 +1325,13 @@
   .install-fab[hidden]{ display: none !important; }
   .install-fab:hover{
     background: var(--red-deep);
-    transform: translateX(-50%) translateY(-2px);
+    transform: translateY(-2px);
     box-shadow:
       0 20px 38px -15px rgba(70, 25, 10, .8),
       inset 0 0 0 1px rgba(255, 248, 233, .2);
   }
-  .install-fab:active{ transform: translateX(-50%) translateY(0); }
-  .install-fab:disabled{ opacity: .65; cursor: wait; transform: translateX(-50%); }
+  .install-fab:active{ transform: translateY(0); }
+  .install-fab:disabled{ opacity: .65; cursor: wait; }
   .install-icon{
     display: grid;
     place-items: center;
@@ -1506,8 +1565,12 @@
     .footer{ flex-direction: column; gap: 10px; }
     .footer-side{ text-align: left; width: 100%; }
     .load-status, .footer-actions{ justify-content: flex-start; }
+    .agenda-strip{ gap: 4px 8px; margin-top: 8px; padding: 7px 0; font-size: .54rem; }
+    .agenda-note{ flex: 1 0 100%; text-align: center; }
+    .agenda-link{ padding: 4px 0; }
+    .legend-swipe{ display: inline; }
     .lb-figure figcaption{ flex-direction: column; gap: 6px; }
-    .install-fab{ bottom: max(14px, env(safe-area-inset-bottom, 0px)); padding: 10px 15px 10px 10px; font-size: .56rem; }
+    .install-fab{ right: max(12px, env(safe-area-inset-right, 0px)); bottom: max(14px, env(safe-area-inset-bottom, 0px)); padding: 9px 13px 9px 9px; font-size: .54rem; }
     .install-sheet{ padding: 12px; place-items: end center; }
     .install-panel{ width: 100%; max-height: 86vh; padding: 24px 20px 20px; }
   }
@@ -1520,13 +1583,14 @@
     .plate figcaption a{ align-self: flex-start; }
     .story-foot{ flex-wrap: wrap; gap: 6px 12px; }
     .story-credit{ flex: 1 1 100%; }
+    .story-actions{ width: 100%; justify-content: flex-start; }
     .calendar-legend{ gap: 3px 10px; }
     .archive-head h4{ font-size: .95rem; }
     .footer-note{ font-size: .78rem; }
   }
 
   @media (max-width: 380px){
-    .install-fab{ font-size: .52rem; padding: 9px 12px 9px 9px; gap: 8px; }
+    .install-fab{ right: max(10px, env(safe-area-inset-right, 0px)); font-size: .5rem; padding: 8px 11px 8px 8px; gap: 8px; }
     .install-icon{ width: 25px; height: 25px; }
     body{ font-size: 16px; }
     .almanac{ padding: 18px 12px 20px; }
@@ -1617,7 +1681,7 @@
   /* ---------- impresión ---------- */
   @media print{
     body{ background: #fff; padding: 0; }
-    body::before, .monthnav, .today-btn, .archive, .footer-actions, .load-status, .lb-close, .plate-zoom, .month-arrows, .year-stepper button, .back-today{ display: none !important; }
+    body::before, .nav-row, .agenda-strip, .today-btn, .archive, .footer-actions, .load-status, .lb-close, .plate-zoom, .month-arrows, .year-stepper button, .back-today{ display: none !important; }
     .almanac{ box-shadow: none; border: 1px solid #000; width: 100%; padding: 24px; }
     .almanac::before, .almanac::after, .corner, .leaf-right::before{ display: none; }
     .spread{ grid-template-columns: 1fr 1fr; gap: 22px; }
@@ -1674,6 +1738,23 @@
     <button class="today-btn" id="todayBtn" type="button" title="Ir al mes actual">◎ Hoy</button>
   </div>
 
+  <div class="agenda-strip" aria-label="Acciones de Google Calendar">
+    <span class="agenda-title">
+      <span class="agenda-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+          <path d="M3 10h18M8 3v4M16 3v4"></path>
+          <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"></path>
+        </svg>
+      </span>
+      Tu agenda
+    </span>
+    <a class="agenda-link" href="https://calendar.google.com/calendar/r" target="_blank" rel="noopener noreferrer" title="Abrir tu Google Calendar en otra pestaña">Google Calendar <span aria-hidden="true">↗</span></a>
+    <span class="agenda-dot" aria-hidden="true">◆</span>
+    <button class="agenda-link" id="addCalendarTop" type="button" title="Añadir la historia de este mes a tu Google Calendar">Añadir mes <span aria-hidden="true">＋</span></button>
+    <span class="agenda-note">Sin conectar cuentas</span>
+  </div>
+
   <main class="spread">
     <section class="leaf leaf-left" aria-label="Calendario del mes">
       <div class="month-plate">
@@ -1704,6 +1785,7 @@
           <span><b>●</b> hoy</span>
           <span><b>○</b> día señalado</span>
           <span><b>◆</b> efeméride</span>
+          <span class="legend-swipe">Desliza ↔</span>
         </div>
       </div>
 
@@ -1764,7 +1846,10 @@
         </div>
         <div class="story-foot">
           <span class="story-credit" id="storyCredit">Colección Museo de Bogotá · Daniel Rodríguez</span>
-          <button class="text-btn" id="openLightbox" type="button">Ampliar lámina ↗</button>
+          <div class="story-actions">
+            <button class="text-btn" id="addCalendarStory" type="button" title="Añadir la historia de este mes a Google Calendar">Añadir a Calendar</button>
+            <button class="text-btn" id="openLightbox" type="button">Ampliar lámina ↗</button>
+          </div>
         </div>
       </article>
     </section>
@@ -1838,7 +1923,7 @@
       <path d="m9.2 10.8 2.8 2.8 2.8-2.8"></path>
     </svg>
   </span>
-  <span class="install-label">Instalar app</span>
+  <span class="install-label">Instalar</span>
 </button>
 
 <div class="install-sheet" id="installSheet" role="dialog" aria-modal="true" aria-labelledby="installTitle" aria-hidden="true">
@@ -1930,6 +2015,7 @@
     },
     {
       name: "Abril",
+      calendarDay: 9,
       kicker: "1944 · Plaza de Bolívar",
       title: "Cuando la ciudad se detuvo",
       lede: "En 1944, los taxistas bogotanos pararon sus carros para protestar por los uniformes y los taxímetros.",
@@ -1978,6 +2064,7 @@
     },
     {
       name: "Julio",
+      calendarDay: 20,
       kicker: "20 de julio de 1917 · El progreso llega en tren",
       title: "La puerta de la Sabana",
       lede: "Con la Estación de la Sabana, Bogotá dejó de ser un pueblo de mulas y se asomó al siglo XX.",
@@ -1994,6 +2081,7 @@
     },
     {
       name: "Agosto",
+      calendarDay: 18,
       kicker: "18 de agosto de 1929 · Monserrate",
       title: "Subir al cielo en ocho minutos",
       lede: "El funicular de Monserrate cambió la peregrinación a pie por un viaje de ocho minutos sobre la ciudad.",
@@ -2010,6 +2098,7 @@
     },
     {
       name: "Septiembre",
+      calendarDay: 21,
       kicker: "21 de septiembre de 1921 · La Fiesta del Estudiante",
       title: "Pericles y el carnaval",
       lede: "Durante trece años, septiembre en Bogotá fue sinónimo de carrozas, disfraces y un personaje que terminaba en la hoguera.",
@@ -2494,6 +2583,35 @@
 
 
 
+
+  function formatCalendarDate(date){
+    return date.getFullYear() + pad(date.getMonth() + 1) + pad(date.getDate());
+  }
+
+  function calendarTemplateUrl(){
+    const story = STORIES[viewMonth];
+    const day = story.calendarDay || 1;
+    const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    let date = new Date(viewYear, viewMonth, day);
+    if (date < todayStart) date = new Date(viewYear + 1, viewMonth, day);
+    const end = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
+    const appUrl = location.href.split(/[?#]/)[0];
+    const title = "Bogotá Antigua · " + MONTH_NAMES[viewMonth] + ": " + story.title;
+    const details = story.lede + "\n\n" + story.caption + "\n\nMás: " + appUrl;
+    const params = [
+      "action=TEMPLATE",
+      "text=" + encodeURIComponent(title),
+      "dates=" + formatCalendarDate(date) + "/" + formatCalendarDate(end),
+      "details=" + encodeURIComponent(details),
+      "location=" + encodeURIComponent("Bogotá, Colombia")
+    ];
+    return "https://calendar.google.com/calendar/render?" + params.join("&");
+  }
+
+  function openCalendarTemplate(){
+    window.open(calendarTemplateUrl(), "_blank", "noopener,noreferrer");
+  }
+
   function isStandaloneApp(){
     return window.matchMedia("(display-mode: standalone)").matches
       || window.matchMedia("(display-mode: fullscreen)").matches
@@ -2662,6 +2780,35 @@
     monthNav.querySelector('[data-month="' + viewMonth + '"]').focus();
   });
 
+
+  const spreadEl = document.querySelector(".spread");
+  let swipeStart = null;
+  if (spreadEl) {
+    spreadEl.addEventListener("touchstart", (event) => {
+      if (event.touches.length !== 1) return;
+      if (event.target.closest("a, input, select, textarea, .monthnav, .lightbox, .install-sheet, .plate-zoom")) return;
+      swipeStart = {
+        x: event.touches[0].clientX,
+        y: event.touches[0].clientY,
+        time: Date.now()
+      };
+    }, { passive: true });
+
+    spreadEl.addEventListener("touchend", (event) => {
+      if (!swipeStart) return;
+      const touch = event.changedTouches[0];
+      const dx = touch.clientX - swipeStart.x;
+      const dy = touch.clientY - swipeStart.y;
+      const elapsed = Date.now() - swipeStart.time;
+      swipeStart = null;
+      if (elapsed > 700) return;
+      if (Math.abs(dx) < 55 || Math.abs(dx) < Math.abs(dy) * 1.4) return;
+      changeMonth(dx < 0 ? 1 : -1);
+    }, { passive: true });
+
+    spreadEl.addEventListener("touchcancel", () => { swipeStart = null; }, { passive: true });
+  }
+
   daysEl.addEventListener("click", (event) => {
     const btn = event.target.closest(".day[data-date]");
     if (btn) selectDate(btn.dataset.date);
@@ -2681,6 +2828,8 @@
   $("lightbox").addEventListener("click", (event) => {
     if (event.target === $("lightbox")) closeLightbox();
   });
+  $("addCalendarTop").addEventListener("click", openCalendarTemplate);
+  $("addCalendarStory").addEventListener("click", openCalendarTemplate);
   installBtn.addEventListener("click", installApp);
   $("installClose").addEventListener("click", closeInstallSheet);
   installSheet.addEventListener("click", (event) => {

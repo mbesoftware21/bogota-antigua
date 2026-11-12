@@ -9,6 +9,8 @@ Calendario editorial ilustrado con doce historias y fotografías de archivo de B
 - Calendario real que abre en el mes actual y resalta el día de hoy.
 - Doce meses, cada uno con una historia distinta y una fotografía de archivo.
 - Navegación por mes y año, botón **Hoy**, efemérides y fechas destacadas.
+- Barra **Tu agenda** con acceso directo a Google Calendar y un recordatorio mensual del almanaque.
+- Gestos de deslizamiento en móvil para cambiar de mes.
 - Animación de cambio de mes con un giro de página antigua.
 - Botón flotante **Instalar app**: instala el almanaque como PWA en Android, iPhone, iPad o escritorio, con acceso directo y modo sin conexión.
 - Láminas ampliables, créditos, enlace a la fuente e impresión.
@@ -43,6 +45,17 @@ Luego visita `http://localhost:8000`.
 │   └── preview.jpg             # captura de referencia
 └── README.md
 ```
+
+## Google Calendar
+
+La app **no pide conectar ninguna cuenta y no guarda credenciales**. La barra **Tu agenda** ofrece:
+
+- **Google Calendar ↗**: abre el calendario del usuario en otra pestaña.
+- **Añadir mes ＋**: abre Google Calendar con un evento precargado de la historia del mes, en formato todo el día. El usuario solo confirma y guarda; Google Calendar se encarga del recordatorio y la notificación.
+
+El evento se propone en la próxima ocurrencia de la fecha de la historia: por ejemplo, el Bogotazo el 9 de abril, el funicular el 18 de agosto o la Fiesta del Estudiante el 21 de septiembre. Para los meses sin día histórico exacto se usa el día 1.
+
+Esto no requiere OAuth, Client ID, token ni servidor. Si en el futuro se quisiera **leer las programaciones dentro de la app**, Google sí exige un Client ID público y el consentimiento del usuario; esa integración no está incluida para mantener la app sin credenciales.
 
 ## Instalar como app
 
