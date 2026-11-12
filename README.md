@@ -53,7 +53,7 @@ La app **no pide conectar ninguna cuenta y no guarda credenciales**. La barra **
 - **Google Calendar ↗**: abre el calendario del usuario en otra pestaña.
 - **Añadir mes ＋**: abre Google Calendar con un evento precargado de la historia del mes, en formato todo el día. El usuario solo confirma y guarda; Google Calendar se encarga del recordatorio y la notificación.
 
-El evento se propone en la próxima ocurrencia de la fecha de la historia: por ejemplo, el Bogotazo el 9 de abril, el funicular el 18 de agosto o la Fiesta del Estudiante el 21 de septiembre. Para los meses sin día histórico exacto se usa el día 1.
+El evento se propone en la próxima ocurrencia de la fecha de la historia: por ejemplo, el Bogotazo el 9 de abril, el funicular el 18 de agosto o la Fiesta del Estudiante el 21 de septiembre. Para los meses sin día histórico exacto se usa el día 1. Si estás viendo el mes actual y la fecha ya pasó, se propone mañana como recordatorio.
 
 Esto no requiere OAuth, Client ID, token ni servidor. Si en el futuro se quisiera **leer las programaciones dentro de la app**, Google sí exige un Client ID público y el consentimiento del usuario; esa integración no está incluida para mantener la app sin credenciales.
 

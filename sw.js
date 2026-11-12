@@ -1,4 +1,4 @@
-const CACHE = "bogota-antigua-v3";
+const CACHE = "bogota-antigua-v4";
 const CORE = [
   new URL("./", self.location).href,
   new URL("./index.html", self.location).href,
